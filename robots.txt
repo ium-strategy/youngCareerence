@@ -1,0 +1,6 @@
+# 서울영커리언스 인턴십 가을학기 상세페이지
+# 실제 배포 도메인이 정해지면 Sitemap 주소를 실제 주소로 교체하세요.
+User-agent: *
+Allow: /
+
+Sitemap: https://example.seoul.go.kr/sitemap.xml
