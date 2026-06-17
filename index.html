@@ -126,7 +126,7 @@
   .sec-no{flex:none;width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--poster-yellow);font-family:var(--font-display);font-size:22px;display:flex;align-items:center;justify-content:center;}
   .sec-title{font-size:29px;font-weight:700;color:var(--navy);line-height:1.2;}
   .mo-br{display:none;}  /* 모바일 전용 줄바꿈 */
-  .sec-lead{font-size:18px;color:var(--gray);margin:14px 0 28px;line-height:1.6;}
+  .sec-lead{font-size:18px;color:var(--gray);margin:12px 0 20px;line-height:1.6;}
   .accent{color:var(--blue);font-weight:700;}
   .accent-o{color:var(--orange-deep);font-weight:700;}
   .card{background:var(--white);border-radius:18px;box-shadow:var(--shadow-card);}
@@ -184,6 +184,11 @@
   .closing .lineB{display:block;font-size:clamp(20px,3.5vw,33px);font-weight:700;}
   .closing b{color:var(--brown);font-weight:inherit;}
   @media (max-width:560px){ .illo-text{top:8%;} }
+  /* 모바일: 히어로 일러스트 확대 — 제목·가운데 캐릭터 크게(양옆 여백만 크롭) */
+  @media (max-width:560px){
+    .hero{padding-top:0;}
+    .hero-poster{width:148vw;max-width:148vw;margin-left:calc(50% - 74vw);margin-right:calc(50% - 74vw);margin-top:-10px;margin-bottom:14px;}
+  }
   .cta-row{position:relative;margin-top:6px;}
   .btn-primary{display:flex;width:100%;max-width:720px;margin:0 auto;justify-content:center;align-items:center;gap:9px;background:#1B1714;color:#fff;text-decoration:none;font-size:18px;font-weight:700;padding:18px 34px;border-radius:40px;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:transform .15s,box-shadow .15s;}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.26);}
@@ -307,7 +312,7 @@
   .tl-arrow{flex:none;align-self:center;width:26px;display:flex;align-items:center;justify-content:center;color:var(--point);font-size:22px;font-weight:700;z-index:2;}
   .tl .n{width:42px;height:42px;border-radius:50%;background:var(--point);color:#fff;font-family:var(--font-display);font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 3px 8px rgba(16,198,133,.4);}
   .tl .lb{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:5px;}
-  .tl .dt{font-size:14.5px;font-weight:700;color:var(--brown);line-height:1.35;}
+  .tl .dt{font-size:14.5px;font-weight:700;color:var(--brown);line-height:1.35;white-space:nowrap;}
   .sch-note{font-size:14.5px;color:var(--gray);margin-top:18px;line-height:1.5;}
   .bonus{margin-top:20px;background:var(--sky);border:2px solid var(--stroke);border-radius:14px;padding:20px 24px;box-shadow:var(--shadow-card);}
   .bonus h4{font-size:18px;font-weight:700;color:var(--point-dk);margin-bottom:7px;}
@@ -410,7 +415,7 @@
 
   /* ===== 모바일 ===== */
   @media (max-width:720px){
-    section{padding:40px 20px;}
+    section{padding:30px 20px;}
     .hero{padding:34px 20px 40px;}
     .hero-poster{margin-top:-34px;margin-bottom:16px;}
     .hero h1{font-size:38px;}
@@ -430,7 +435,9 @@
     .info-cell .k{font-size:14.5px;}
     .info-cell .v{font-size:16px;}
     .rec-item p{font-size:18px;}
-    .tl .n{width:44px;height:44px;font-size:20px;}
+    .tl .n{width:38px;height:38px;font-size:18px;margin:0 auto 8px;}
+    .tl{padding:14px 10px;}
+    .sch-note{margin-top:12px;}
     .tl .lb{font-size:16px;}
     .tl .dt{font-size:16px;}
     .edu-card h4{font-size:18px;min-height:auto;}
@@ -7435,13 +7442,13 @@ z"/>
     <div class="sec-head"><span class="sec-no">6</span><h2 class="sec-title display">신청 절차 한눈에</h2></div>
     <p class="sch-lead">접수부터 합격까지, 차례대로 진행됩니다.</p>
     <div class="timeline">
-      <div class="tl"><div class="n">1</div><div class="lb">온라인 접수</div><div class="dt">6. 15(월)<br>~ 7. 3(금) 17시</div></div>
+      <div class="tl"><div class="n">1</div><div class="lb">온라인 접수</div><div class="dt">6. 15(월) ~ 7. 3(금) 17시</div></div>
       <div class="tl-arrow">›</div>
-      <div class="tl"><div class="n">2</div><div class="lb">서류심사</div><div class="dt">7. 6(월)<br>~ 7. 8(수)</div></div>
+      <div class="tl"><div class="n">2</div><div class="lb">서류심사</div><div class="dt">7. 6(월) ~ 7. 8(수)</div></div>
       <div class="tl-arrow">›</div>
-      <div class="tl"><div class="n">3</div><div class="lb">면접심사</div><div class="dt">7. 14(화)<br>~ 7. 17(금)</div></div>
+      <div class="tl"><div class="n">3</div><div class="lb">면접심사</div><div class="dt">7. 14(화) ~ 7. 17(금)</div></div>
       <div class="tl-arrow">›</div>
-      <div class="tl"><div class="n">4</div><div class="lb">최종발표</div><div class="dt">7. 31(금)<br>17시 예정</div></div>
+      <div class="tl"><div class="n">4</div><div class="lb">최종발표</div><div class="dt">7. 31(금) 17시 예정</div></div>
     </div>
     <p class="sch-note">※ 서류심사 기준: 지원동기·참여의지 35 / 직무이해도 35 / 소통능력 30 · 면접 대면 진행 · 일정은 현장 사정에 따라 변경될 수 있습니다.</p>
     <div class="bonus">
