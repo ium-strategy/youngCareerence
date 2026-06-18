@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  서울영커리언스 인턴십 가을학기 상세페이지 사이트맵
-  · 실제 배포 도메인이 정해지면 아래 <loc>의 https://example.seoul.go.kr 부분을
-    실제 주소로 일괄 치환하세요.
-  · 검색엔진 등록: 네이버 서치어드바이저 / 구글 서치콘솔에 이 sitemap.xml URL을 제출.
--->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://xn--oy2b19kw7abzfnkr0bp79a.kr/</loc>
     <lastmod>2026-06-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <!-- 신청처(외부 링크 참고용) -->
-  <url>
-    <loc>https://youth.seoul.go.kr/</loc>
-    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
   </url>
 </urlset>
