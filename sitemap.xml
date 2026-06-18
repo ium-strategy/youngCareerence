@@ -7,15 +7,15 @@
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://example.seoul.go.kr/seoulyoung/autumn/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://xn--oy2b19kw7abzfnkr0bp79a.kr/</loc>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <!-- 신청처(외부 링크 참고용) -->
   <url>
     <loc>https://youth.seoul.go.kr/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
