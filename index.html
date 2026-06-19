@@ -1,6 +1,22 @@
 <!doctype html>
 <html lang="ko">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PLNFM4DK');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFVWPFXDZ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFVWPFXDZ5');
+</script>
+<!-- End Google tag -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#FFF297">
@@ -30,23 +46,7 @@
 <meta name="twitter:title" content="서울영커리언스 인턴십 가을학기 참여자 모집">
 <meta name="twitter:description" content="재학 중에, 학점 받으며 진짜 경력을 시작하세요. 15개 기업·7개 직무·75명 모집. 신청 ~7.3(금).">
 <meta name="twitter:image" content="https://xn--oy2b19kw7abzfnkr0bp79a.kr/og-image.png">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PLNFM4DK');</script>
-<!-- End Google Tag Manager -->
-	
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFVWPFXDZ5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-MFVWPFXDZ5');
-</script>	
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -530,6 +530,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLNFM4DK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="page">
 
   <div class="top-gov-bar">
@@ -7732,6 +7736,7 @@ z"/>
       if (window.Kakao && !Kakao.isInitialized()) Kakao.init(KAKAO_JS_KEY);
       var btn = document.getElementById('kakaoShareBtn');
       if (btn) btn.addEventListener('click', function () {
+        if (typeof gtag === 'function') { gtag('event', 'kakao_share'); }
         if (!window.Kakao || !Kakao.isInitialized()) { alert('카카오 SDK를 불러오지 못했습니다.'); return; }
         Kakao.Share.sendDefault({
           objectType: 'feed',
@@ -7745,6 +7750,34 @@ z"/>
             { title: '자세히 보고 신청하기', link: { mobileWebUrl: SHARE_LINK, webUrl: SHARE_LINK } }
           ]
         });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      function track(name, params) {
+        if (typeof gtag === 'function') { gtag('event', name, params || {}); }
+      }
+
+      var heroCta = document.querySelector('.btn-primary');
+      if (heroCta) heroCta.addEventListener('click', function () {
+        track('apply_click', { cta_location: 'hero' });
+      });
+
+      var floatCta = document.querySelector('.float-cta a');
+      if (floatCta) floatCta.addEventListener('click', function () {
+        track('apply_click', { cta_location: 'float' });
+      });
+
+      var pdfBtn = document.querySelector('.nd-btn.pdf');
+      if (pdfBtn) pdfBtn.addEventListener('click', function () {
+        track('notice_download', { file_format: 'pdf' });
+      });
+
+      var hwpBtn = document.querySelector('.nd-btn.hwp');
+      if (hwpBtn) hwpBtn.addEventListener('click', function () {
+        track('notice_download', { file_format: 'hwp' });
       });
     })();
   </script>
