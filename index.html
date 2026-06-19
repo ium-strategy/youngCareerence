@@ -505,7 +505,13 @@
   .org-contact h5{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:5px;}
   .org-contact p{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.5;}
   @media(max-width:760px){.org-contact{width:100%;}}
+  .kakao-float{position:fixed;right:18px;bottom:170px;z-index:60;width:46px;height:46px;border-radius:50%;border:2px solid var(--stroke);background:#FEE500;color:#3A1D1D;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(42,38,32,.22);transition:transform .2s,filter .2s;}
+  .kakao-float:hover{transform:translateY(-2px);filter:brightness(.97);}
+  .kakao-float:active{transform:translateY(0);}
+  .kakao-float svg{width:22px;height:22px;}
+  @media (max-width:720px){.kakao-float{right:14px;bottom:142px;width:42px;height:42px;}.kakao-float svg{width:20px;height:20px;}}
 </style>
+  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
 <div class="page">
@@ -7586,7 +7592,7 @@ z"/>
         </div>
       </div>
       <div class="org-contact">
-        <div><h5>인턴십 운영사무국</h5><p>02-734-1626 · 02-734-1628<br>seoulyoung@ccei.kr</p></div>
+        <div><h5>인턴십 운영사무국</h5><p>02-734-1626, 1628<br>seoulyoung@ccei.kr</p></div>
         <div><h5>학점인정·현장실습 문의</h5><p>소속 대학별 표준현장실습센터</p></div>
       </div>
     </div>
@@ -7602,6 +7608,9 @@ z"/>
   <a href="https://m.site.naver.com/2axMX" target="_blank" rel="noopener">지금 신청하기 <span class="d">~7.3(금)</span> →</a>
 </div>
 
+<button type="button" id="kakaoShareBtn" class="kakao-float" aria-label="카카오톡으로 공유하기">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4C7.03 4 3 7.13 3 11c0 2.4 1.6 4.52 4.06 5.78L6.3 19.6c-.1.36.27.66.58.46l3.06-1.98c.66.13 1.35.2 2.06.2 4.97 0 9-3.13 9-7s-4.03-7-9-7z"/></svg>
+</button>
 <button class="to-top" type="button" aria-label="맨 위로">↑</button>
 
 <div class="modal-overlay" id="compModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
@@ -7699,5 +7708,29 @@ z"/>
 })();
 </script>
 
+  <script>
+    (function () {
+      var KAKAO_JS_KEY = 'defd5cb4e17b9a9221e7e12a892e70a2';
+      var SITE = 'https://xn--oy2b19kw7abzfnkr0bp79a.kr/';
+      var SHARE_LINK = 'https://xn--oy2b19kw7abzfnkr0bp79a.kr/share.html';
+      if (window.Kakao && !Kakao.isInitialized()) Kakao.init(KAKAO_JS_KEY);
+      var btn = document.getElementById('kakaoShareBtn');
+      if (btn) btn.addEventListener('click', function () {
+        if (!window.Kakao || !Kakao.isInitialized()) { alert('카카오 SDK를 불러오지 못했습니다.'); return; }
+        Kakao.Share.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: '서울영커리언스 인턴십 가을학기 참여자 모집',
+            description: '재학 중에, 학점 받으며 진짜 경력을 시작하세요. 15개 기업·7개 직무·75명 모집. 신청 ~7.3(금)',
+            imageUrl: SITE + 'og-image.png',
+            link: { mobileWebUrl: SHARE_LINK, webUrl: SHARE_LINK }
+          },
+          buttons: [
+            { title: '자세히 보고 신청하기', link: { mobileWebUrl: SHARE_LINK, webUrl: SHARE_LINK } }
+          ]
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
