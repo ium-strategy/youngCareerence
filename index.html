@@ -521,11 +521,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .org-contact h5{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:5px;}
   .org-contact p{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.5;}
   @media(max-width:760px){.org-contact{width:100%;}}
-  .kakao-float{position:fixed;right:18px;bottom:170px;z-index:60;width:46px;height:46px;border-radius:50%;border:2px solid var(--stroke);background:#FEE500;color:#3A1D1D;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(42,38,32,.22);transition:transform .2s,filter .2s;}
+  .kakao-float{position:fixed;right:18px;bottom:170px;z-index:60;width:54px;padding:9px 6px;border-radius:16px;border:2px solid var(--stroke);background:#FEE500;color:#3A1D1D;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;box-shadow:0 4px 14px rgba(42,38,32,.22);transition:transform .2s,filter .2s;}
   .kakao-float:hover{transform:translateY(-2px);filter:brightness(.97);}
   .kakao-float:active{transform:translateY(0);}
-  .kakao-float svg{width:22px;height:22px;}
-  @media (max-width:720px){.kakao-float{right:14px;bottom:142px;width:42px;height:42px;}.kakao-float svg{width:20px;height:20px;}}
+  .kakao-float svg{width:22px;height:22px;flex:none;}
+  .kakao-float .kf-label{font-family:var(--font-base);font-weight:500;font-size:12px;line-height:1.15;text-align:center;white-space:nowrap;}
+  @media (max-width:720px){.kakao-float{right:14px;bottom:142px;width:50px;padding:8px 5px;}.kakao-float svg{width:20px;height:20px;}.kakao-float .kf-label{font-size:11px;}}
 </style>
   <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
@@ -7630,6 +7631,7 @@ z"/>
 
 <button type="button" id="kakaoShareBtn" class="kakao-float" aria-label="카카오톡으로 공유하기">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4C7.03 4 3 7.13 3 11c0 2.4 1.6 4.52 4.06 5.78L6.3 19.6c-.1.36.27.66.58.46l3.06-1.98c.66.13 1.35.2 2.06.2 4.97 0 9-3.13 9-7s-4.03-7-9-7z"/></svg>
+  <span class="kf-label">카톡<br>공유</span>
 </button>
 <button class="to-top" type="button" aria-label="맨 위로">↑</button>
 
@@ -7697,6 +7699,7 @@ z"/>
   function openModal(id){
     var c = COMPANIES[id];
     if(!c) return;
+    if (typeof gtag === 'function') { gtag('event', 'company_modal_open', { company_id: id, company_name: c.name }); }
     lastFocused = document.activeElement;
     elNo.textContent = '기업 ' + pad(c.no);
     elName.textContent = c.name;
@@ -7778,6 +7781,16 @@ z"/>
       var hwpBtn = document.querySelector('.nd-btn.hwp');
       if (hwpBtn) hwpBtn.addEventListener('click', function () {
         track('notice_download', { file_format: 'hwp' });
+      });
+
+      var youthLink = document.querySelector('.final a');
+      if (youthLink) youthLink.addEventListener('click', function () {
+        track('youth_link_click');
+      });
+
+      var univAcc = document.querySelector('.univ-acc');
+      if (univAcc) univAcc.addEventListener('toggle', function () {
+        if (univAcc.open) track('univ_list_expand');
       });
     })();
   </script>
