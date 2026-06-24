@@ -46,7 +46,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="서울영커리언스 인턴십 가을학기 참여자 모집">
 <meta name="twitter:description" content="재학 중에, 학점 받으며 진짜 경력을 시작하세요. 15개 기업·7개 직무·75명 모집. 신청 ~7.3(금).">
 <meta name="twitter:image" content="https://xn--oy2b19kw7abzfnkr0bp79a.kr/og-image.png">
-
+<!-- Google tag (gtag.js) event - delayed navigation helper -->
+<script>
+  // Helper function to delay opening a URL until a gtag event is sent.
+  // Call it in response to an action that should navigate to a URL.
+  function gtagSendEvent(url) {
+    var callback = function () {
+      if (typeof url === 'string') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion_event_outbound_click', {
+      'event_callback': callback,
+      'event_timeout': 2000,
+      // <event_parameters>
+    });
+    return false;
+  }
+</script>	
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
