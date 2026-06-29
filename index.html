@@ -606,7 +606,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .univ-cond p{font-family:var(--font-base);font-weight:500;font-size:13px;line-height:1.5;color:var(--brown-dk);margin:4px 0;}
   .jo-ic{height:34px;width:auto;max-width:46px;object-fit:contain;display:block;}
   html{scroll-behavior:smooth;}
-  #about,#sec-eligibility,#sec-jobs,#sec-companies,#schedule,#sec-method{scroll-margin-top:76px;}
+  #about,#sec-eligibility,#sec-jobs,#sec-companies,#schedule,#sec-method,#sec-review{scroll-margin-top:76px;}
   .nav-fab-wrap{position:fixed;top:11px;right:16px;z-index:80;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s,transform .25s,visibility .25s;}
   .nav-fab-wrap.show{opacity:1;visibility:visible;transform:translateY(0);}
   .nav-fab{width:42px;height:42px;border-radius:50%;border:2px solid var(--stroke);background:var(--point);color:#fff;cursor:pointer;box-shadow:2px 2px 0 var(--stroke);display:flex;align-items:center;justify-content:center;transition:transform .15s,filter .15s;padding:0;}
@@ -625,6 +625,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .m-back{display:none;background:var(--accent);color:var(--navy);font-family:var(--font-base);font-size:13px;font-weight:700;padding:4px 12px;border:none;border-radius:20px;margin-bottom:10px;cursor:pointer;}
   .m-back:hover{filter:brightness(.95);}
   .jo-dot{display:inline-block;width:.24em;height:.24em;border-radius:50%;background:currentColor;vertical-align:.13em;margin:0 .3em;}
+  /* ===== 후기 (카테고리 아코디언) ===== */
+  .rvp{background:var(--cream);}
+  .rvp-acc{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;}
+  .rvp-cat[open]{grid-column:1 / -1;}
+  .rvp-cat{border:2px solid var(--stroke);border-radius:16px;background:var(--white);box-shadow:var(--shadow-card);overflow:hidden;}
+  .rvp-cat>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:18px 22px;font-family:var(--font-display);font-size:20px;color:var(--navy);scroll-margin-top:84px;}
+  .rvp-cat>summary::-webkit-details-marker{display:none;}
+  .rvp-cat>summary:hover{background:var(--orange-lt);}
+  .rvp-cat-cnt{margin-left:auto;font-family:var(--font-base);font-size:12.5px;font-weight:700;color:#fff;background:var(--point);border-radius:20px;padding:3px 12px;}
+  .rvp-chev{font-size:15px;color:var(--navy);transition:transform .2s ease;flex:none;}
+  details[open]>summary .rvp-chev{transform:rotate(180deg);}
+  .rvp-cat-body{display:flex;flex-direction:column;gap:10px;padding:6px 14px 16px;border-top:2px dashed var(--gray-lt);}
+  .rvp-item{display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid var(--stroke);border-radius:13px;background:var(--cream);text-decoration:none;cursor:pointer;transition:transform .12s,box-shadow .12s,background .12s;}
+  .rvp-item:hover{background:var(--orange-lt);transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--stroke);}
+  .rvp-imain{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;}
+  .rvp-hook{font-family:var(--font-display);font-size:16.5px;color:var(--navy);line-height:1.38;}
+  .rvp-hook b{color:var(--brown);font-weight:inherit;}
+  .rvp-meta{font-size:12.5px;color:var(--gray);line-height:1.5;}
+  .rvp-meta .role{color:var(--point-dk);font-weight:700;}
+  .rvp-go{flex:none;font-size:18px;font-weight:700;color:var(--point-dk);}
+  .rvp-more{text-align:center;margin-top:24px;}
+  .rvp-more a{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--stroke);border-radius:14px;box-shadow:var(--shadow-card);padding:13px 24px;font-weight:700;font-size:15px;color:var(--navy);text-decoration:none;}
+  @media(max-width:720px){.rvp-acc{grid-template-columns:1fr;}.rvp-cat[open]{grid-column:auto;}}
+  @media(max-width:560px){.rvp-cat>summary{font-size:18px;padding:16px 18px;}.rvp-hook{font-size:15.5px;}}
 </style>
   <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
@@ -7726,6 +7750,94 @@ z"/>
   </section>
 
 
+  <section class="rvp" id="sec-review">
+    <div class="sec-head"><span class="sec-no">10</span><h2 class="sec-title display">먼저 다녀온 선배들의 후기</h2></div>
+    <p class="sec-lead">직무 카테고리를 누르고, 후기를 눌러 바로 확인해 보세요.</p>
+    <div class="rvp-acc" id="rvpAcc">
+      <details class="rvp-cat">
+        <summary><span>마케팅·홍보</span><span class="rvp-cat-cnt">후기 3</span><span class="rvp-chev">▾</span></summary>
+        <div class="rvp-cat-body">
+          <a class="rvp-item" href="review.html?r=ccei">
+            <span class="rvp-imain">
+              <span class="rvp-hook">"제가 만든 콘텐츠로 <b>팔로워가 늘었어요</b>"</span>
+              <span class="rvp-meta">가톨릭대 · 서울창조경제혁신센터</span>
+              <span class="rvp-meta"><span class="role">마케팅·홍보</span> · 공공기관</span>
+            </span>
+            <span class="rvp-go">→</span>
+          </a>
+          <a class="rvp-item" href="review.html?r=udm">
+            <span class="rvp-imain">
+              <span class="rvp-hook">"스펙이 없어도 <b>실무로 채울 수 있어요</b>"</span>
+              <span class="rvp-meta">서울여대 · 유디엠</span>
+              <span class="rvp-meta"><span class="role">마케팅·홍보</span> · 디지털 마케팅 대행</span>
+            </span>
+            <span class="rvp-go">→</span>
+          </a>
+          <a class="rvp-item" href="review.html?r=newand">
+            <span class="rvp-imain">
+              <span class="rvp-hook">"취향이 아니라 <b>전략으로</b> 콘텐츠를 만들었어요"</span>
+              <span class="rvp-meta">이화여대 · 뉴앤디</span>
+              <span class="rvp-meta"><span class="role">마케팅·홍보</span> · 패션·뷰티 커머스</span>
+            </span>
+            <span class="rvp-go">→</span>
+          </a>
+        </div>
+      </details>
+
+      <details class="rvp-cat">
+        <summary><span>IT·개발</span><span class="rvp-cat-cnt">후기 1</span><span class="rvp-chev">▾</span></summary>
+        <div class="rvp-cat-body">
+          <a class="rvp-item" href="review.html?r=mesait">
+            <span class="rvp-imain">
+              <span class="rvp-hook">"AI 모델 <b>실무 흐름</b>을 처음 만져봤어요"</span>
+              <span class="rvp-meta">동덕여대 · 메사쿠어컴퍼니</span>
+              <span class="rvp-meta"><span class="role">IT·개발</span> · 얼굴인식 AI</span>
+            </span>
+            <span class="rvp-go">→</span>
+          </a>
+        </div>
+      </details>
+
+      <details class="rvp-cat">
+        <summary><span>경영·총무</span><span class="rvp-cat-cnt">후기 1</span><span class="rvp-chev">▾</span></summary>
+        <div class="rvp-cat-body">
+          <a class="rvp-item" href="review.html?r=mesamg">
+            <span class="rvp-imain">
+              <span class="rvp-hook">"전공으로만 알던 <b>인사·총무</b>를 직무로 해봤어요"</span>
+              <span class="rvp-meta">한국항공대 · 메사쿠어컴퍼니</span>
+              <span class="rvp-meta"><span class="role">경영·총무</span> · 얼굴인식 AI</span>
+            </span>
+            <span class="rvp-go">→</span>
+          </a>
+        </div>
+      </details>
+
+      <details class="rvp-cat">
+        <summary><span>기타·운영</span><span class="rvp-cat-cnt">후기 2</span><span class="rvp-chev">▾</span></summary>
+        <div class="rvp-cat-body">
+          <a class="rvp-item" href="review.html?r=wff">
+            <span class="rvp-imain">
+              <span class="rvp-hook">"<b>평가위원회</b>에 직접 들어가 봤어요"</span>
+              <span class="rvp-meta">서울시립대 · 서울시여성가족재단</span>
+              <span class="rvp-meta"><span class="role">기타·운영</span> · 공공재단</span>
+            </span>
+            <span class="rvp-go">→</span>
+          </a>
+          <a class="rvp-item" href="review.html?r=dcircle">
+            <span class="rvp-imain">
+              <span class="rvp-hook">"<b>낯선 분야</b>에 도전하며 성장했어요"</span>
+              <span class="rvp-meta">삼육대 · 디써클</span>
+              <span class="rvp-meta"><span class="role">기타·운영</span> · R&D 매칭 플랫폼</span>
+            </span>
+            <span class="rvp-go">→</span>
+          </a>
+        </div>
+      </details>
+    </div>
+    <div class="rvp-more"><a href="review.html">후기 전체 페이지에서 보기 →</a></div>
+  </section>
+
+
   <section class="footer-cta">
     <div class="deadline">지원하는 그 순간이, <br class="mo-br"><span class="hl">커리어의 첫걸음입니다.</span></div>
     <div class="reprise">첫 커리어의 시작, <br class="mo-br"><span class="w">서울영커리언스</span>가 함께합니다.</div>
@@ -7781,6 +7893,7 @@ z"/>
     <a href="#sec-jobs" class="nm-item">직무·기업</a>
     <a href="#schedule" class="nm-item">신청 일정</a>
     <a href="#sec-method" class="nm-item">신청 방법</a>
+    <a href="#sec-review" class="nm-item">참여자 후기</a>
   </nav>
 </div>
 
@@ -8087,6 +8200,20 @@ z"/>
     if(jm) jm.addEventListener('click',function(e){ if(e.target===jm) closeJob(); });
     document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&jm&&jm.classList.contains('open')) closeJob(); });
     if(backBtn){ backBtn.addEventListener('click',function(){ if(typeof window.closeModal==='function') window.closeModal(); backBtn.style.display='none'; if(returnIdx>=0) openJob(returnIdx); }); }
+  })();
+  </script>
+  <script>
+  (function(){
+    var acc=document.getElementById('rvpAcc'); if(!acc) return;
+    var cats=[].slice.call(acc.querySelectorAll('details.rvp-cat'));
+    cats.forEach(function(d){
+      d.addEventListener('toggle',function(){
+        if(!d.open) return;
+        cats.forEach(function(o){ if(o!==d) o.open=false; });
+        var sm=d.querySelector('summary');
+        if(sm) sm.scrollIntoView({block:'start',behavior:'smooth'});
+      });
+    });
   })();
   </script>
 </body>
