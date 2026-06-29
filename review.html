@@ -81,68 +81,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .rv-hero h1 b{color:var(--point-dk);font-weight:inherit;}
   .rv-hero .dek{font-size:clamp(15px,2.4vw,18px);color:var(--gray);max-width:620px;margin:0 auto;line-height:1.6;}
 
-  /* sample notice (preview only — remove on launch) */
-  .rv-sample{max-width:var(--page);margin:18px auto 0;border:2px dashed var(--brown);background:var(--orange-lt);color:var(--brown-dk);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:600;line-height:1.5;}
-
-  /* ===== FILTER + GRID ===== */
-  .rv-list{background:var(--cream);}
-  .rv-filter{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:30px;}
-  .rv-chip{font-family:var(--font-base);font-weight:700;font-size:14.5px;color:var(--navy);background:var(--white);border:2px solid var(--stroke);border-radius:30px;padding:8px 16px;cursor:pointer;box-shadow:2px 2px 0 var(--stroke);transition:transform .12s,box-shadow .12s,background .12s,color .12s;}
+  /* ===== STICKY CATEGORY FILTER ===== */
+  .rv-stickybar{position:sticky;top:0;z-index:40;background:var(--cream);border-bottom:2px solid var(--stroke);}
+  .rv-stickyinner{max-width:var(--page);margin:0 auto;padding:11px clamp(16px,4vw,40px);}
+  .rv-filter{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .rv-filter::-webkit-scrollbar{display:none;}
+  .rv-chip{flex:none;font-family:var(--font-base);font-weight:700;font-size:14px;color:var(--navy);background:var(--white);border:2px solid var(--stroke);border-radius:30px;padding:8px 16px;cursor:pointer;white-space:nowrap;box-shadow:2px 2px 0 var(--stroke);transition:transform .12s,box-shadow .12s,background .12s,color .12s;}
   .rv-chip:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--stroke);}
   .rv-chip[aria-pressed="true"]{background:var(--point);color:#fff;}
+  .rv-chip .c-num{opacity:.55;font-weight:600;margin-left:5px;}
+  .rv-chip[aria-pressed="true"] .c-num{opacity:.85;}
 
-  .rv-grid{display:grid;grid-template-columns:1fr;gap:16px;}
-  /* category section heading (used when MODE = 'grouped') */
-  .rv-cat-head{display:flex;align-items:center;gap:10px;margin:34px 0 14px;}
-  .rv-cat-head:first-child{margin-top:0;}
-  .rv-cat-head h2{font-family:var(--font-display);font-size:22px;color:var(--navy);line-height:1.2;}
-  .rv-cat-head .count{font-size:13px;font-weight:700;color:#fff;background:var(--brown);border-radius:30px;padding:3px 11px;}
-  .rv-card{display:flex;align-items:stretch;width:100%;background:var(--white);border:2px solid var(--stroke);border-radius:18px;box-shadow:var(--shadow-card);overflow:hidden;cursor:pointer;text-align:left;transition:transform .15s,box-shadow .15s;}
-  .rv-card:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-card-hover);}
-  .rv-card:focus-visible{outline:3px solid var(--point);outline-offset:3px;}
-  .rv-thumb{flex:none;width:260px;position:relative;border-right:2px solid var(--stroke);background:var(--orange-lt);overflow:hidden;}
-  .rv-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-  .rv-thumb img.rv-illust{object-fit:contain;padding:16px;}
-  .rv-tag{position:absolute;left:12px;top:12px;background:var(--point);color:#fff;font-size:12px;font-weight:700;border-radius:8px;padding:4px 10px;border:2px solid var(--stroke);}
-  .rv-main{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:9px;padding:24px 28px;}
-  .rv-card .who{font-size:13.5px;color:var(--gray);font-weight:600;line-height:1.4;}
-  .rv-card .hook{font-family:var(--font-display);font-size:clamp(18px,2.4vw,23px);color:var(--navy);line-height:1.4;}
-  .rv-card .hook b{color:var(--brown);font-weight:inherit;}
-  .rv-go{font-size:14px;font-weight:700;color:var(--point-dk);margin-top:2px;}
-  .rv-empty{text-align:center;color:var(--gray);font-weight:600;padding:40px 0;}
+  /* ===== BLOG FEED ===== */
+  .rv-list{background:var(--cream);}
+  .rv-feed{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:36px;}
+  .rv-empty{text-align:center;color:var(--gray);font-weight:600;padding:50px 0;}
 
-  /* ===== MODAL ===== */
-  .rv-overlay{position:fixed;inset:0;background:rgba(30,27,22,.6);display:none;align-items:flex-start;justify-content:center;padding:5vh 16px;z-index:80;overflow-y:auto;}
-  .rv-overlay.on{display:flex;}
-  .rv-modal{background:var(--cream);border:2px solid var(--stroke);border-radius:22px;box-shadow:6px 6px 0 var(--stroke);max-width:680px;width:100%;padding:0;position:relative;}
-  .rv-mhead{background:var(--yellow-soft);border-bottom:2px solid var(--stroke);border-radius:20px 20px 0 0;padding:26px 28px 22px;position:relative;}
-  .rv-close{position:absolute;top:14px;right:16px;width:36px;height:36px;border-radius:50%;border:2px solid var(--stroke);background:var(--white);font-size:20px;line-height:1;cursor:pointer;}
-  .rv-meyebrow{font-size:13px;font-weight:700;color:var(--brown-dk);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-  .rv-modal h2{font-family:var(--font-display);font-size:clamp(20px,3.2vw,26px);color:var(--navy);line-height:1.34;margin-bottom:8px;}
-  .rv-mdek{font-size:14.5px;color:var(--gray);line-height:1.55;}
-  .rv-mwho{margin-top:12px;font-size:13.5px;color:var(--navy);font-weight:600;}
-  .rv-heroimg{margin:0;border-bottom:2px solid var(--stroke);background:var(--yellow-soft);}
-  .rv-heroimg img{display:block;width:100%;height:auto;max-height:300px;object-fit:cover;}
-  .rv-heroimg img.rv-illust{height:190px;max-height:190px;object-fit:contain;padding:10px 0;}
-  .rv-heroimg figcaption{font-size:12px;color:var(--gray);padding:8px 28px 0;}
+  .post{background:var(--white);border:2px solid var(--stroke);border-radius:20px;box-shadow:var(--shadow-card);overflow:hidden;scroll-margin-top:80px;}
+  .post.flash{animation:postFlash 1.5s ease;}
+  @keyframes postFlash{0%,100%{box-shadow:var(--shadow-card);}25%{box-shadow:0 0 0 4px var(--accent),5px 5px 0 var(--stroke);}}
 
-  .rv-chips{display:flex;flex-wrap:wrap;gap:8px;padding:18px 28px 0;}
-  .rv-stat{background:var(--white);border:2px solid var(--stroke);border-radius:12px;padding:8px 12px;font-size:13px;font-weight:700;color:var(--navy);box-shadow:2px 2px 0 var(--stroke);}
-  .rv-stat span{color:var(--gray);font-weight:600;}
+  .post-hero{margin:0;background:var(--yellow-soft);border-bottom:2px solid var(--stroke);}
+  .post-hero img{display:block;width:100%;height:auto;max-height:340px;object-fit:cover;}
+  .post-hero img.rv-illust{height:210px;max-height:210px;object-fit:contain;padding:14px 0;}
 
-  .rv-body{padding:18px 28px 4px;}
-  .rv-qa{margin-bottom:18px;}
-  .rv-q{font-family:var(--font-display);font-size:16.5px;color:var(--point-dk);line-height:1.4;margin-bottom:6px;}
-  .rv-a{font-size:15px;color:var(--navy-text);line-height:1.7;}
-  .rv-pull{margin:8px 0 22px;background:var(--navy);color:#fff;border:2px solid var(--stroke);border-radius:14px;padding:20px 42px 30px 48px;position:relative;font-size:17px;font-weight:500;line-height:1.5;}
-  .rv-pull::before{content:"\201C";position:absolute;left:16px;top:8px;font-family:var(--font-display);font-size:44px;color:var(--point);line-height:1;}
-  .rv-pull::after{content:"\201D";position:absolute;right:16px;bottom:2px;font-family:var(--font-display);font-size:44px;color:var(--point);line-height:1;}
+  .post-body{padding:26px clamp(20px,4vw,36px) 30px;}
+  .post-badge{display:inline-block;background:var(--navy);color:var(--poster-yellow);font-family:var(--font-display);font-size:13.5px;padding:5px 14px;border-radius:30px;margin-bottom:14px;letter-spacing:.02em;}
+  .post-hook{font-family:var(--font-display);font-size:clamp(21px,3.4vw,27px);color:var(--navy);line-height:1.34;margin-bottom:10px;}
+  .post-hook b{color:var(--brown);font-weight:inherit;}
+  .post-dek{font-size:15.5px;color:var(--gray);line-height:1.6;margin-bottom:12px;}
+  .post-who{font-size:13.5px;color:var(--navy);font-weight:600;}
 
-  .rv-cta-wrap{padding:0 28px 28px;}
-  .rv-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--point);color:#fff;border:2px solid var(--stroke);border-radius:14px;box-shadow:var(--shadow-card);padding:16px;font-family:var(--font-base);font-weight:700;font-size:17px;text-decoration:none;transition:transform .12s,box-shadow .12s;}
-  .rv-cta:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-card-hover);}
-  .rv-cta .d{font-size:13px;font-weight:500;opacity:.9;}
-  .rv-req{text-align:center;font-size:12px;color:var(--gray);margin-top:9px;}
+  .post-stats{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 2px;}
+  .post-stat{background:var(--cream);border:2px solid var(--stroke);border-radius:11px;padding:7px 12px;font-size:12.5px;font-weight:700;color:var(--navy);box-shadow:2px 2px 0 var(--stroke);}
+  .post-stat span{color:var(--gray);font-weight:600;}
+
+  .post-divider{height:0;border:0;border-top:2px dashed var(--gray-lt);margin:24px 0;}
+
+  .post-qa{display:flex;flex-direction:column;gap:20px;}
+  .post-q{font-family:var(--font-display);font-size:17px;color:var(--point-dk);line-height:1.4;margin-bottom:7px;}
+  .post-a{font-size:15.5px;color:var(--navy-text);line-height:1.8;}
+
+  .post-pull{position:relative;margin:26px 0 4px;background:var(--navy);color:#fff;border:2px solid var(--stroke);border-radius:14px;padding:22px 44px 30px 48px;font-size:17.5px;font-weight:500;line-height:1.5;}
+  .post-pull::before{content:"\201C";position:absolute;left:16px;top:8px;font-family:var(--font-display);font-size:46px;color:var(--point);line-height:1;}
+  .post-pull::after{content:"\201D";position:absolute;right:16px;bottom:2px;font-family:var(--font-display);font-size:46px;color:var(--point);line-height:1;}
+
+  .post-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:24px;background:var(--point);color:#fff;border:2px solid var(--stroke);border-radius:14px;box-shadow:var(--shadow-card);padding:15px;font-family:var(--font-base);font-weight:700;font-size:16.5px;text-decoration:none;transition:transform .12s,box-shadow .12s;}
+  .post-cta:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-card-hover);}
+  .post-cta .d{font-size:13px;font-weight:500;opacity:.9;}
+  .post-req{text-align:center;font-size:12px;color:var(--gray);margin-top:9px;}
 
   /* ===== ORG BAR (simplified) ===== */
   .org-bar{background:var(--white);border-top:2px solid var(--stroke);}
@@ -168,17 +155,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   @media(max-width:720px){
     .mo-br{display:inline;}
-    .rv-card{flex-direction:column;}
-    .rv-thumb{width:100%;aspect-ratio:16/9;border-right:none;border-bottom:2px solid var(--stroke);}
-    .rv-main{padding:18px;}
-    .rv-card .hook{font-size:18px;}
-    .rv-cat-head h2{font-size:19px;}
+    .rv-stickyinner{padding:9px 16px;}
+    .rv-feed{gap:26px;}
+    .post-hero img{max-height:240px;}
+    .post-hero img.rv-illust{height:180px;max-height:180px;}
+    .post-body{padding:22px 18px 26px;}
+    .post-hook{font-size:20px;}
+    .post-q{font-size:16px;}
+    .post-a{font-size:15px;}
+    .post-pull{font-size:16px;padding:20px 38px 28px 42px;}
     .float-cta{background:none;padding:0 0 24px;text-align:center;pointer-events:none;}
     .float-cta a{display:inline-flex;width:auto;max-width:none;pointer-events:auto;font-size:22px;padding:20px 56px;border-radius:50px;}
     .to-top{bottom:114px;right:14px;width:42px;height:42px;font-size:20px;}
-    .rv-overlay{padding:0;align-items:flex-end;}
-    .rv-modal{border-radius:22px 22px 0 0;box-shadow:none;border-bottom:none;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-    .rv-mhead{border-radius:20px 20px 0 0;position:sticky;top:0;z-index:1;}
     .to-home{top:auto;bottom:114px;left:14px;}
   }
 </style>
@@ -200,18 +188,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>먼저 다녀온 선배들의 <br class="mo-br"><b>진짜 이야기</b></h1>
     <p class="dek">학점만 받는 인턴일까, 진짜 경력이 될까. 직접 한 학기를 보낸 선배들이 답합니다.</p>
   </section>
+  </div><!-- /.page (hero only; sticky bar must sit outside overflow:hidden) -->
 
-  <!-- ===== LIST ===== -->
-  <section class="rv-list">
-    <div class="rv-filter" id="rvFilter" role="group" aria-label="직무별 후기 필터">
-      <button class="rv-chip" data-filter="all" aria-pressed="true">전체</button>
-      <button class="rv-chip" data-filter="marketing" aria-pressed="false">마케팅·홍보</button>
-      <button class="rv-chip" data-filter="it" aria-pressed="false">IT·개발</button>
-      <button class="rv-chip" data-filter="mgmt" aria-pressed="false">경영·총무</button>
-      <button class="rv-chip" data-filter="ops" aria-pressed="false">기타·운영</button>
+  <!-- ===== STICKY CATEGORY FILTER ===== -->
+  <div class="rv-stickybar">
+    <div class="rv-stickyinner">
+      <div class="rv-filter" id="rvFilter" role="group" aria-label="직무별 후기 필터"><!-- chips injected --></div>
     </div>
+  </div>
 
-    <div id="rvContent"><!-- cards injected --></div>
+  <!-- ===== BLOG FEED ===== -->
+  <section class="rv-list">
+    <div class="rv-feed" id="rvFeed"><!-- posts injected --></div>
   </section>
 
   <!-- ===== ORG BAR ===== -->
@@ -226,34 +214,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     주최 서울특별시 미래청년기획관 · 운영 서울창조경제혁신센터 (서울영커리언스 인턴십 운영사무국)<br>
     © 2026 서울창조경제혁신센터. ALL RIGHTS RESERVED.
   </div>
-
-</div>
-
-<!-- ===== MODAL ===== -->
-<div class="rv-overlay" id="rvOverlay" role="dialog" aria-modal="true" aria-labelledby="rvTitle">
-  <div class="rv-modal">
-    <div class="rv-mhead">
-      <button class="rv-close" id="rvClose" aria-label="닫기">&times;</button>
-      <div class="rv-meyebrow"><span class="rv-badge" id="rvMBadge"></span> 봄학기 참여자 인터뷰</div>
-      <h2 id="rvTitle"></h2>
-      <p class="rv-mdek" id="rvMDek"></p>
-      <div class="rv-mwho" id="rvMWho"></div>
-    </div>
-    <div id="rvHero"></div>
-    <div class="rv-chips">
-      <div class="rv-stat"><span>근무</span> 한 학기 (현장실습 연계)</div>
-      <div class="rv-stat"><span>처우</span> 학점 인정 · 급여 지급</div>
-      <div class="rv-stat"><span>보호</span> 근로계약 · 4대 보험</div>
-    </div>
-    <div class="rv-body" id="rvBody"></div>
-    <div class="rv-cta-wrap">
-      <a class="rv-cta" id="rvApply" href="https://m.site.naver.com/2axMX" target="_blank" rel="noopener">
-        나도 지원하기 <span class="d">~7.3(금)</span> →
-      </a>
-      <p class="rv-req">신청은 청년몽땅정보통에서 · 회원가입 필수</p>
-    </div>
-  </div>
-</div>
 
 <!-- ===== FLOATING ===== -->
 <div class="float-cta">
@@ -399,92 +359,108 @@ var CATS = [
 var MODE = "flat";
 
 REVIEWS.forEach(function(r,i){ r._i = i; });
-var content = document.getElementById('rvContent');
+var feed = document.getElementById('rvFeed');
 var filterBar = document.getElementById('rvFilter');
 
 function imgFor(r){ return r.photo ? r.photo : PLACEHOLDER[r._i % PLACEHOLDER.length]; }
-function cardHTML(r){
-  return '<button class="rv-card" data-cat="'+r.cat+'" data-idx="'+r._i+'">'+
-    '<div class="rv-thumb"><span class="rv-tag">'+r.badge+'</span><img'+(r.photo?'':' class="rv-illust"')+' src="'+imgFor(r)+'" alt="'+r.who+'"></div>'+
-    '<div class="rv-main">'+
-      '<div class="who">'+r.who+'</div>'+
-      '<div class="hook">'+r.hook+'</div>'+
-      '<div class="rv-go">읽어보기 →</div>'+
-    '</div></button>';
-}
-function gridHTML(list){ return '<div class="rv-grid">'+list.map(cardHTML).join('')+'</div>'; }
 
-/* flat: 한 목록 + 직무 필터 */
-function renderFlat(filter){
-  filterBar.style.display = '';
-  var list = (!filter || filter==='all')
-    ? REVIEWS
-    : REVIEWS.filter(function(r){ return r.cat===filter; });
-  content.innerHTML = list.length
-    ? gridHTML(list)
-    : '<div class="rv-empty">해당 직무 후기는 곧 추가됩니다.</div>';
+/* 한 후기 = 펼쳐진 블로그 글(article) */
+function postHTML(r){
+  var qa = r.qa.map(function(p){
+    return '<div><div class="post-q">Q. '+p[0]+'</div><div class="post-a">'+p[1]+'</div></div>';
+  }).join('');
+  return '<article class="post" id="post-'+r.id+'" data-cat="'+r.cat+'" data-id="'+r.id+'">'+
+    '<figure class="post-hero"><img'+(r.photo?'':' class="rv-illust"')+' src="'+imgFor(r)+'" alt="'+r.who+' 인터뷰 이미지"></figure>'+
+    '<div class="post-body">'+
+      '<span class="post-badge">'+r.badge+'</span>'+
+      '<h2 class="post-hook">'+r.hook+'</h2>'+
+      '<p class="post-dek">'+r.dek+'</p>'+
+      '<p class="post-who">'+r.who+'</p>'+
+      '<div class="post-stats">'+
+        '<span class="post-stat"><span>근무</span> 한 학기 (현장실습 연계)</span>'+
+        '<span class="post-stat"><span>처우</span> 학점 인정 · 급여 지급</span>'+
+        '<span class="post-stat"><span>보호</span> 근로계약 · 4대 보험</span>'+
+      '</div>'+
+      '<hr class="post-divider">'+
+      '<div class="post-qa">'+qa+'</div>'+
+      '<div class="post-pull">'+r.pull+'</div>'+
+      '<a class="post-cta" href="https://m.site.naver.com/2axMX" target="_blank" rel="noopener">나도 지원하기 <span class="d">~7.3(금)</span> →</a>'+
+      '<p class="post-req">신청은 청년몽땅정보통에서 · 회원가입 필수</p>'+
+    '</div>'+
+  '</article>';
 }
 
-/* grouped: 카테고리별 섹션 (후기 없는 카테고리는 자동 생략) */
-function renderGrouped(){
-  filterBar.style.display = 'none';
-  var html = '';
+var emptyEl = null;
+function buildFeed(){
+  feed.innerHTML = REVIEWS.map(postHTML).join('') +
+    '<div class="rv-empty" id="rvEmpty" style="display:none">해당 직무 후기는 곧 추가됩니다.</div>';
+  emptyEl = document.getElementById('rvEmpty');
+  attachApply();
+  observePosts();
+}
+
+/* 카테고리 칩(전체 + 직무별, 건수 포함) */
+function buildChips(){
+  var html = '<button class="rv-chip" data-filter="all" aria-pressed="true">전체 <span class="c-num">'+REVIEWS.length+'</span></button>';
   CATS.forEach(function(c){
-    var list = REVIEWS.filter(function(r){ return r.cat===c.id; });
-    if(!list.length) return;
-    html += '<div class="rv-cat-head"><h2>'+c.label+'</h2><span class="count">'+list.length+'</span></div>' + gridHTML(list);
+    var n = REVIEWS.filter(function(r){ return r.cat===c.id; }).length;
+    if(!n) return;
+    html += '<button class="rv-chip" data-filter="'+c.id+'" aria-pressed="false">'+c.label+' <span class="c-num">'+n+'</span></button>';
   });
-  content.innerHTML = html || '<div class="rv-empty">후기가 곧 추가됩니다.</div>';
+  filterBar.innerHTML = html;
+  filterBar.querySelectorAll('.rv-chip').forEach(function(ch){
+    ch.addEventListener('click', function(){
+      var f = ch.dataset.filter;
+      filterBar.querySelectorAll('.rv-chip').forEach(function(x){ x.setAttribute('aria-pressed', x===ch?'true':'false'); });
+      applyFilter(f);
+      /* 필터 바꾸면 피드 첫 글이 고정 바 바로 아래로 오도록 스크롤 */
+      var y = feed.getBoundingClientRect().top + window.scrollY - 64;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      if(window.gaEvent) gaEvent('review_filter', {filter:f});
+    });
+  });
 }
 
-function render(){ MODE==='grouped' ? renderGrouped() : renderFlat('all'); }
-render();
-
-/* ===== FILTER (flat 모드에서만 노출) ===== */
-var chips = document.querySelectorAll('.rv-chip');
-chips.forEach(function(c){
-  c.addEventListener('click', function(){
-    var f = c.dataset.filter;
-    chips.forEach(function(x){ x.setAttribute('aria-pressed', x===c ? 'true':'false'); });
-    renderFlat(f);
-    if(window.gaEvent) gaEvent('review_filter', {filter:f});
+/* 글 보이기/숨기기로 필터 (스크롤형 피드 유지) */
+function applyFilter(f){
+  var any = false;
+  feed.querySelectorAll('.post').forEach(function(el){
+    var show = (f==='all' || el.dataset.cat===f);
+    el.style.display = show ? '' : 'none';
+    if(show) any = true;
   });
-});
-
-/* ===== MODAL ===== */
-var overlay = document.getElementById('rvOverlay');
-function openModal(i){
-  var r = REVIEWS[i];
-  document.getElementById('rvMBadge').textContent = r.badge;
-  document.getElementById('rvTitle').innerHTML = r.hook;
-  document.getElementById('rvMDek').textContent = r.dek;
-  document.getElementById('rvMWho').textContent = r.who;
-  document.getElementById('rvHero').innerHTML =
-    '<figure class="rv-heroimg"><img'+(r.photo?'':' class="rv-illust"')+' src="'+imgFor(r)+'" alt="'+r.who+' 인터뷰 이미지"></figure>';
-  document.getElementById('rvBody').innerHTML =
-    r.qa.map(function(p){
-      return '<div class="rv-qa"><div class="rv-q">Q. '+p[0]+'</div><div class="rv-a">'+p[1]+'</div></div>';
-    }).join('') +
-    '<div class="rv-pull">'+r.pull+'</div>';
-  overlay.classList.add('on');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('rvClose').focus();
-  if(window.gaEvent) gaEvent('review_open', {cat:r.cat});
+  if(emptyEl) emptyEl.style.display = any ? 'none' : '';
 }
-function closeModal(){ overlay.classList.remove('on'); document.body.style.overflow=''; }
-content.addEventListener('click', function(e){
-  var card = e.target.closest('.rv-card');
-  if(card) openModal(+card.dataset.idx);
-});
-document.getElementById('rvClose').addEventListener('click', closeModal);
-overlay.addEventListener('click', function(e){ if(e.target===overlay) closeModal(); });
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
 
-/* apply tracking */
-['rvApply','floatApply'].forEach(function(id){
-  var el = document.getElementById(id);
-  if(el) el.addEventListener('click', function(){ if(window.gaEvent) gaEvent('apply_click', {from:'review'}); });
-});
+/* 글이 화면에 들어오면 1회만 review_open 집계 */
+function observePosts(){
+  if(!('IntersectionObserver' in window)) return;
+  var seen = {};
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var id = en.target.dataset.id;
+        if(id && !seen[id]){ seen[id]=1; if(window.gaEvent) gaEvent('review_open', {cat:en.target.dataset.cat, id:id}); }
+      }
+    });
+  }, {threshold:0.5});
+  feed.querySelectorAll('.post').forEach(function(p){ io.observe(p); });
+}
+
+/* 글마다 들어 있는 지원 CTA 집계 */
+function attachApply(){
+  feed.querySelectorAll('.post-cta').forEach(function(el){
+    el.addEventListener('click', function(){ if(window.gaEvent) gaEvent('apply_click', {from:'review'}); });
+  });
+}
+
+buildChips();
+buildFeed();
+applyFilter('all');
+
+/* 하단 고정 지원 버튼 집계 */
+var floatApply = document.getElementById('floatApply');
+if(floatApply) floatApply.addEventListener('click', function(){ if(window.gaEvent) gaEvent('apply_click', {from:'review'}); });
 
 /* ===== TO TOP ===== */
 var toTop = document.querySelector('.to-top');
@@ -492,8 +468,20 @@ window.addEventListener('scroll', function(){
   if(window.scrollY > 400) toTop.classList.add('show'); else toTop.classList.remove('show');
 });
 toTop.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
-(function(){ try{ var p=new URLSearchParams(location.search).get('r');
-  if(p){ var i=REVIEWS.findIndex(function(r){return r.id===p;}); if(i>=0) openModal(i); } }catch(e){} })();
+
+/* ===== 딥링크 (review.html?r=<id>) → 해당 글로 스크롤 + 강조 ===== */
+(function(){ try{
+  var p = new URLSearchParams(location.search).get('r');
+  if(!p) return;
+  var el = document.getElementById('post-'+p);
+  if(!el) return;
+  applyFilter('all');
+  setTimeout(function(){
+    el.scrollIntoView({behavior:'smooth', block:'start'});
+    el.classList.add('flash');
+    setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+  }, 80);
+}catch(e){} })();
 </script>
 </body>
 </html>
