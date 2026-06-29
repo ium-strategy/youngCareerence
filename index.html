@@ -106,6 +106,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-display: swap;
   }
 
+  /* ·(U+00B7)·“ ”(U+201C/201D) 글리프가 디스플레이 폰트에서 깨져, 해당 코드포인트만 GMarketSans로 대체 */
+  @font-face {
+    font-family: 'Cafe24Anemone';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+    unicode-range: U+00B7, U+201C, U+201D;
+  }
+
   :root{
     --poster-yellow:#FFF297;     /* 메인 배경 노랑 */
     --yellow-soft:#FFF7C2;       /* 옅은 노랑 톤 */
