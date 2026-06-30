@@ -8069,14 +8069,44 @@ z"/>
         if (typeof gtag === 'function') { gtag('event', name, params || {}); }
       }
 
+      // ===== 긴급: 청년몽땅정보통 공고 일시 비활성화 (원격 스위치) =====
+      // 복구 방법: 같은 폴더의 status.json 에서 "applyPaused": false 로 바꾸면
+      //           index.html 수정/재배포 없이 경고문이 사라지고 정상 연결됩니다.
+      // status.json 을 못 읽으면(누락/오류) 아래 기본값을 사용합니다(안전상 차단 유지).
+      var APPLY_PAUSED = true; // ← status.json 로딩 실패 시 fallback 기본값
+      var APPLY_PAUSED_MSG = '현재 지원자가 몰리면서 일시적으로 연결되지 않고 있습니다.\n잠시 후 다시 시도해 주세요.';
+
+      // status.json 으로 일시중지 여부를 원격 제어 (Cloudflare 캐시 우회용 쿼리 부착)
+      try {
+        fetch('status.json?_=' + Date.now(), { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (cfg) {
+            if (cfg && typeof cfg.applyPaused === 'boolean') { APPLY_PAUSED = cfg.applyPaused; }
+            if (cfg && typeof cfg.message === 'string' && cfg.message) { APPLY_PAUSED_MSG = cfg.message; }
+          })
+          .catch(function () { /* 로딩 실패 시 기본값 유지 */ });
+      } catch (e) { /* fetch 미지원 등: 기본값 유지 */ }
+
       var heroCta = document.querySelector('.btn-primary');
-      if (heroCta) heroCta.addEventListener('click', function () {
+      if (heroCta) heroCta.addEventListener('click', function (e) {
+        if (APPLY_PAUSED) {
+          e.preventDefault();
+          track('apply_click', { cta_location: 'hero', link_status: 'paused' });
+          alert(APPLY_PAUSED_MSG);
+          return;
+        }
         track('apply_click', { cta_location: 'hero' });
         gtag('event', 'conversion', { send_to: 'AW-18252347379/9mn2CKvu18QcEPPvsv9D' });
       });
 
       var floatCta = document.querySelector('.float-cta a');
-      if (floatCta) floatCta.addEventListener('click', function () {
+      if (floatCta) floatCta.addEventListener('click', function (e) {
+        if (APPLY_PAUSED) {
+          e.preventDefault();
+          track('apply_click', { cta_location: 'float', link_status: 'paused' });
+          alert(APPLY_PAUSED_MSG);
+          return;
+        }
         track('apply_click', { cta_location: 'float' });
         gtag('event', 'conversion', { send_to: 'AW-18252347379/9mn2CKvu18QcEPPvsv9D' });
       });
