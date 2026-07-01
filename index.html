@@ -8124,7 +8124,11 @@ z"/>
       var s = Math.floor(diff/1000),
           d = Math.floor(s/86400), h = Math.floor((s%86400)/3600),
           m = Math.floor((s%3600)/60), sec = s%60;
-      elB.textContent = 'D-' + Math.ceil(diff/86400000);
+      elB.textContent = (function(){
+        var KST = 9 * 3600 * 1000; /* KST = UTC+9 */
+        var dd = Math.floor((DEADLINE + KST) / 86400000) - Math.floor((Date.now() + KST) / 86400000);
+        return dd <= 0 ? 'D-DAY' : ('D-' + dd);
+      })();
       elD.textContent = p(d); elH.textContent = p(h); elM.textContent = p(m); elS.textContent = p(sec);
       elTH.textContent = Math.floor(diff/3600000);
       elTM.textContent = p(Math.floor((diff%3600000)/60000));
