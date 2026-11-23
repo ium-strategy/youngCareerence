@@ -402,7 +402,7 @@ const ytThumb=id=>id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:'';
 const thumb=(v,i,label,sm)=>`<div class="th${sm?' sm':''}" style="background:${HUES[i%8]}">${v.yt?`<img src="${ytThumb(v.yt)}" alt="" loading="lazy">`:''}<span class="play" aria-hidden="true"></span>${v.yt?'':`<small>${label}</small>`}</div>`;
 
 const all=[...CS,...IV,...SH.filter(v=>v.yt),...RV];
-document.getElementById('hstats').innerHTML=[['cases','참여기업 보도 사례',CS.length],['interview','인턴 인터뷰',IV.length],['shorts','현장 숏폼',SH.length],['reviews','참여자 후기',RV.length]].map(([h,l,n])=>`<a href="#${h}">${l} ${n}</a>`).join('');
+document.getElementById('hstats').innerHTML=[['cases','참여기업 보도 사례',CS.length],['interview','인턴 인터뷰',IV.length],['shorts','현장 숏폼',SH.filter(v=>v.yt).length],['reviews','참여자 후기',RV.length]].map(([h,l,n])=>`<a href="#${h}">${l} ${n}</a>`).join('');
 document.getElementById('hpic').innerHTML=[...IV.filter(v=>v.yt),...SH.filter(v=>v.yt)].slice(0,3).map((v,i)=>`<button class="v v${i+1}" type="button" data-open="${v.id}" aria-label="${esc(v.h)} 인터뷰 보기">${thumb(v,i,'인터뷰',true)}</button>`).join('');
 
 document.getElementById('csg').innerHTML=CS.map(c=>`<article class="card cs" data-cat="${c.cat}">
