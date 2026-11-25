@@ -65,9 +65,16 @@ nav{display:flex;gap:24px;margin-left:auto;font-size:15px;font-weight:500}
 nav a{text-decoration:none;color:var(--sub)}nav a:hover{color:var(--ink)}
 header .btn{min-height:42px;padding:0 18px;font-size:14px}
 /* hero */
-.hero-img img{width:100%;height:auto}
-.hero{padding:56px 0 0}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:48px;align-items:end}
+.hero-img{position:relative;margin-top:24px}
+.hero-img img{width:100%;height:auto;border-radius:20px}
+.onb{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);box-shadow:0 8px 20px rgba(0,0,0,.18);min-height:58px;padding:0 36px;font-size:17px}
+.onb:hover{transform:translate(-50%,calc(50% - 2px))}
+.hero{padding:52px 0 0}
+.hero .stats{margin-top:0}
+.hero .wrap:not(.full){margin-top:56px}
+.hero h1{font-size:clamp(26px,3.2vw,38px)!important}
+
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:48px;align-items:center}
 .hero .wrap.full{display:block}
 .hero .kicker{font-size:18px;font-weight:500;color:var(--g)}
 .hero h1{font-size:clamp(34px,4.8vw,56px);line-height:1.22;font-weight:700;letter-spacing:-.03em;margin-top:10px}
@@ -183,7 +190,7 @@ footer{background:#141916;color:#89928D;font-size:13.5px;padding:28px 0;text-ali
 .why-grid{grid-template-columns:1fr}.rev-grid{grid-template-columns:1fr}
 .tl{grid-template-columns:1fr;gap:22px}.tl:before{left:11px;right:auto;top:12px;bottom:12px;width:2px;height:auto}
 .tl li{display:grid;grid-template-columns:24px 1fr;gap:18px;text-align:left;padding:0}.tl .dot{margin:0}}
-@media(max-width:640px){section{padding:68px 0}.wrap{padding:0 20px}
+@media(max-width:640px){.hero-img{margin-top:14px}.hero-img img{border-radius:14px}.onb{min-height:52px;padding:0 26px;font-size:16px}section{padding:68px 0}.wrap{padding:0 20px}
 .stats{grid-template-columns:1fr 1fr}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}
 .row{grid-template-columns:1fr}.row>div:first-child{padding:16px 20px 4px;background:#fff}.row>div:last-child{padding:4px 20px 18px}
 .pair{grid-template-columns:1fr}.sup-item{grid-template-columns:1fr;gap:10px}.sup-item .tag{width:fit-content}
@@ -203,11 +210,17 @@ header .btn{display:none}footer{padding-bottom:96px}
 </div></header>
 
 <main id="top">
-<div class="hero-img"><picture><source media="(max-width:640px)" srcset="hero_mo.jpg"><img src="hero_pc.jpg" width="1920" height="600" alt="2027 서울영커리언스 인턴십 참여기업 모집. 2026년 11월 30일 10시부터 12월 18일 15시까지"></picture></div>
+<div class="wrap"><div class="hero-img"><picture><source media="(max-width:640px)" srcset="hero_mo.jpg"><img src="hero_pc.jpg" width="1920" height="600" alt="2027 서울영커리언스 인턴십 참여기업 모집. 2026년 11월 30일 10시부터 12월 18일 15시까지"></picture>
+<a class="btn btn-y onb" href="https://seoulyoung.ninehire.site/job_posting/aYyrl2SQ" data-cta="banner">참여 신청하기 →</a></div></div>
 
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="wrap full"><div class="stats">
+<div><b>99개사</b><span>2026 참여기업</span></div>
+<div><b>500명</b><span>2026 참여 인턴</span></div>
+<div><b>37개교</b><span>참여대학</span></div>
+<div><b>2,651명</b><span>2026 인턴십 지원자</span></div>
+</div><p class="src">2026년 서울영커리언스 인턴십 운영 기준</p></div>
+<div class="wrap">
 <div>
-<p class="kicker">2027 서울영커리언스 인턴십 참여기업 모집</p>
 <h1>첫 경력의 시작,<br>서울시와 기업이 함께 엽니다</h1>
 <p class="desc">인턴 모집·매칭부터 인건비, 교육까지 서울시가 지원합니다.<br><b>기업은 직무와 멘토만 준비해 주세요!</b></p>
 <div class="ctas"><a class="btn btn-p" href="https://seoulyoung.ninehire.site/job_posting/aYyrl2SQ" data-cta="hero">참여 신청하기 →</a><a class="btn btn-o" href="#overview">모집 개요 보기</a></div>
@@ -215,12 +228,6 @@ header .btn{display:none}footer{padding-bottom:96px}
 <dl class="period"><dt>온라인 접수</dt><dd><b>2026. 11. 30.(월) 10:00</b><br>~ 12. 18.(금) 15:00</dd>
 <div class="count" id="count" aria-live="polite"></div></dl>
 </div>
-<div class="wrap full"><div class="stats">
-<div><b>99개사</b><span>2026 참여기업</span></div>
-<div><b>500명</b><span>2026 참여 인턴</span></div>
-<div><b>37개교</b><span>참여대학</span></div>
-<div><b>2,651명</b><span>2026 인턴십 지원자</span></div>
-</div><p class="src">2026년 서울영커리언스 인턴십 운영 기준</p></div>
 </section>
 
 <section class="why" id="why"><div class="wrap">
