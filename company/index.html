@@ -33,14 +33,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="ko_KR">
 <link rel="icon" href="../favicon-512.png">
 <link rel="apple-touch-icon" href="../favicon-180x180.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-@font-face{font-family:'GMarketSans';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');font-weight:300;font-display:swap}
-@font-face{font-family:'GMarketSans';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');font-weight:500;font-display:swap}
-@font-face{font-family:'GMarketSans';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');font-weight:700;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('fonts/Paperlogy-6SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('fonts/Paperlogy-7Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 :root{
   --g:#017953;--g-dk:#015a3e;--g-lt:#E9F3EE;--y:#FFE864;
   --ink:#1D2320;--sub:#56605B;--line:#DCE3DF;--bg:#F5F7F6;--w:#fff;
-  --font:'GMarketSans','Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;
+  --font:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;
+  --disp:'Paperlogy',var(--font);
 }
 *{box-sizing:border-box;margin:0;padding:0;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
@@ -90,6 +91,7 @@ header .btn{min-height:42px;padding:0 18px;font-size:14px}
 .stats b{display:block;font-size:clamp(28px,3vw,36px);font-weight:700;color:var(--g);line-height:1.2}
 .stats span{font-size:14px;color:var(--sub)}
 .src{font-size:12.5px;color:#89928D;margin-top:10px;text-align:right}
+h1,h2,.stats b,.sup-item .big,.tl .d,.q h3,.card h3,.sup-item h3,.tl h3,.rev-more h3,.dbtn b{font-family:var(--disp)}
 /* why */
 .why{background:var(--bg)}
 .why-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:44px}
