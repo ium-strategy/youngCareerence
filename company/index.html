@@ -8,14 +8,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PLNFM4DK');</script>
 <!-- End Google Tag Manager -->
-<!-- 기업용 GA4 속성 ID를 받으면 여기에 gtag 추가 (학생용 G-MFVWPFXDZ5와 분리) -->
+<!-- ===== 추적 설정: ID만 채우면 해당 태그가 켜집니다 ===== -->
 <script>
+  window.SYC_TRACK = {
+    ga4: '',                      // 기업용 GA4 측정 ID (예: G-XXXXXXXXXX)
+    awId: 'AW-18252347379',       // Google Ads 전환 ID
+    awApplyLabel: '',             // Google Ads '참여 신청 클릭' 전환 라벨
+    metaPixel: '',                // Meta 픽셀 ID (숫자)
+    naverKey: 's_428e213eabfe'    // 네이버 공통 인증키
+  };
   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
   window.gaEvent = function (name, params) {
     var o = { event: name };
     if (params) { for (var k in params) { o[k] = params[k]; } }
     window.dataLayer.push(o);
   };
+  (function (T) {
+    var gid = T.ga4 || T.awId;
+    if (gid) {
+      var g = document.createElement('script'); g.async = true;
+      g.src = 'https://www.googletagmanager.com/gtag/js?id=' + gid;
+      document.head.appendChild(g);
+      gtag('js', new Date());
+      if (T.ga4) gtag('config', T.ga4);
+      if (T.awId) gtag('config', T.awId);
+    }
+    if (T.metaPixel) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', T.metaPixel); fbq('track', 'PageView');
+    }
+  })(window.SYC_TRACK);
+</script>
+<!-- 네이버 공통 스크립트 -->
+<script src="//wcs.naver.net/wcslog.js"></script>
+<script>
+  if (!wcs_add) var wcs_add = {};
+  wcs_add["wa"] = window.SYC_TRACK.naverKey;
+  if (!_nasa) var _nasa = {};
+  if (window.wcs) { wcs.inflow(); wcs_do(); }
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -137,6 +168,7 @@ details.ex ol{padding:0 24px 22px 46px;color:var(--sub);font-size:16px;display:g
 .dbtn .ft{width:56px;height:56px;border-radius:12px;background:var(--g-lt);color:var(--g);font-weight:700;font-size:14px;display:grid;place-items:center}
 .dbtn b{display:block;font-size:17px}.dbtn small{color:var(--sub);font-size:14px}
 .dbtn .ar{font-size:22px;color:var(--g);font-weight:700}
+.dbtn.off{cursor:default}.dbtn.off:hover{border-color:var(--line)}.dbtn .soon{font-size:13px;font-weight:700;color:var(--sub);background:var(--bg);border-radius:999px;padding:6px 12px;white-space:nowrap}
 .fab{position:fixed;right:28px;bottom:28px;z-index:55;box-shadow:0 10px 24px rgba(1,90,62,.28);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .2s,transform .2s}
 .fab.on{opacity:1;transform:none;pointer-events:auto}
 @media(max-width:960px){.dlw{grid-template-columns:1fr;gap:24px}}
@@ -307,8 +339,8 @@ header .btn{display:none}.org-copyright{padding-bottom:96px}.org-inner{flex-dire
 <section class="dl" id="download"><div class="wrap dlw">
 <div><span class="eyebrow">공고 다운로드</span><h2>공고문·신청서류<br>내려받기</h2><p class="lead">신청 전에 공고문을 확인하고, 신청서 서식을 내려받아 작성해 주세요.</p></div>
 <div class="dlist">
-<a class="dbtn" href="notice.pdf" download data-cta="download_notice"><span class="ft">PDF</span><span><b>2027 서울영커리언스 인턴십 참여기업 모집 공고문</b><small>공고문 전문</small></span><span class="ar">↓</span></a>
-<a class="dbtn" href="form.hwp" download data-cta="download_form"><span class="ft">서식</span><span><b>사업 참여 신청서 및 관련자료 (서식 1~3)</b><small>한 개의 파일로 작성해 제출</small></span><span class="ar">↓</span></a>
+<div class="dbtn off"><span class="ft">PDF</span><span><b>2027 서울영커리언스 인턴십 참여기업 모집 공고문</b><small>공고문 전문</small></span><span class="soon">게시 예정</span></div>
+<div class="dbtn off"><span class="ft">HWP</span><span><b>사업 참여 신청서 및 관련자료 (서식 1~3)</b><small>한 개의 파일로 작성해 제출</small></span><span class="soon">게시 예정</span></div>
 </div></div></section>
 
 <section id="schedule"><div class="wrap">
@@ -398,7 +430,17 @@ header .btn{display:none}.org-copyright{padding-bottom:96px}.org-inner{flex-dire
   tick();setInterval(tick,30000);
   var fab=document.getElementById('fab'),fin=document.querySelector('.final');function fv(){var r=fin.getBoundingClientRect();fab.classList.toggle('on',scrollY>700&&r.top>innerHeight-80)}addEventListener('scroll',fv,{passive:true});fv();
   var yt=document.getElementById('yt');yt.addEventListener('click',function(){window.gaEvent('cta_click',{cta_location:'briefing_play'});yt.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/9-LuG8b-qEc?autoplay=1" title="2027 참여기업 모집 온라인 설명회" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'},{once:true});
-  document.querySelectorAll('[data-cta]').forEach(function(a){a.addEventListener('click',function(){window.gaEvent('cta_click',{cta_location:a.dataset.cta,link_url:a.href})})});
+  var T=window.SYC_TRACK;
+  document.querySelectorAll('[data-cta]').forEach(function(a){a.addEventListener('click',function(){
+    var loc=a.dataset.cta, apply=/ninehire\.site\/job_posting/.test(a.href||'');
+    window.gaEvent('cta_click',{cta_location:loc,link_url:a.href});
+    if(!apply) return;
+    window.gaEvent('apply_click',{cta_location:loc});
+    try{ gtag('event','apply_click',{cta_location:loc}); }catch(e){}
+    try{ if(T.awId&&T.awApplyLabel) gtag('event','conversion',{send_to:T.awId+'/'+T.awApplyLabel}); }catch(e){}
+    try{ if(window.fbq) fbq('track','Lead',{content_name:'참여기업 신청 클릭'}); }catch(e){}
+    try{ if(window.wcs){ var n={}; n["cnv"]=wcs.cnv("4","1"); wcs_do(n); } }catch(e){}
+  })});
 })();
 </script>
 </body>
