@@ -389,8 +389,8 @@ CS.forEach(c=>{ if(c.r&&!OUTCOME.includes(c.id)) RV.push({id:'ra-'+c.id.slice(3)
 const ytThumb=id=>id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:'';
 const thumb=(v,i,label,sm)=>`<div class="th${sm?' sm':''}" style="background:${HUES[i%8]}">${v.poster&&CPH[v.poster]?`<img src="${CPH[v.poster]}" alt="" loading="lazy" style="object-position:${v.ppos||'center'}">`:v.yt?`<img src="${ytThumb(v.yt)}" alt="" loading="lazy">`:''}<span class="play" aria-hidden="true"></span>${v.yt?'':`<small>${label}</small>`}</div>`;
 
-/* 같은 학생의 숏폼은 기존 후기 안에서 재생(박주연=가톨릭대·서울창조 후기, 이루리=이화여대·뉴앤디 후기) */
-const SHMAP={'ccei':'sh-pjy','newand':'sh-lrr'};
+/* 숏폼·후기는 따로 노출(같은 학생이어도 합치지 않음) */
+const SHMAP={};
 const SHIN=Object.values(SHMAP);
 const all=[...CS.filter(c=>OUTCOME.includes(c.id)),...SH.filter(v=>v.yt&&!SHIN.includes(v.id)),...RV];
 /* 인터뷰 영상은 별도 섹션 없이 해당 학생의 사례·후기 안에서 재생(중복 노출 방지) */
