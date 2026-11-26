@@ -35,36 +35,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://xn--oy2b19kw7abzfnkr0bp79a.kr/review.html">
 <meta property="og:site_name" content="서울영커리언스 인턴십">
 <meta property="og:locale" content="ko_KR">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-  @font-face{font-family:'GMarketSans';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');font-weight:300;font-display:swap;}
-  @font-face{font-family:'GMarketSans';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');font-weight:500;font-display:swap;}
-  @font-face{font-family:'GMarketSans';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');font-weight:700;font-display:swap;}
-  @font-face{font-family:'Cafe24Anemone';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff') format('woff');font-weight:normal;font-display:swap;}
-  /* ·(U+00B7)·“ ”(U+201C/201D) 글리프가 디스플레이 폰트에서 깨져, 해당 코드포인트만 GMarketSans로 대체 */
-  @font-face{font-family:'Cafe24Anemone';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');font-weight:normal;font-display:swap;unicode-range:U+00B7,U+201C,U+201D;}
+  @font-face{font-family:'Paperlogy';src:url('company/fonts/Paperlogy-6SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+  @font-face{font-family:'Paperlogy';src:url('company/fonts/Paperlogy-7Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 
   :root{
     --yel:#FFF297;--yel-soft:#FFF7C2;--cream:#FFFDF0;--ink:#2A2620;--sub:#5B544A;--line:#2A2620;
     --point:#10C685;--point-dk:#0A9E69;--navy:#101731;--accent:#FFE964;--card:#fff;
     --page:1120px;
-    --font-base:'GMarketSans','Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;
-    --font-display:'Cafe24Anemone',var(--font-base);
+    --font-base:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;
+    --font-display:'Paperlogy',var(--font-base);
   }
   *{box-sizing:border-box;margin:0;padding:0;min-width:0}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
   body{font-family:var(--font-base);background:var(--cream);color:var(--ink);line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:clip}
   a{color:inherit}
   button{font-family:inherit}
-  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.25;text-wrap:balance}
+  h1,h2{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;}
+  h3{font-family:var(--font-base);font-weight:600;letter-spacing:-.01em;}
+  h1,h2,h3{line-height:1.25;text-wrap:balance}
   .wrap{max-width:var(--page);margin:0 auto;padding:0 max(4vw,18px)}
 
   /* hero */
   .hero{background:var(--yel-soft);border-bottom:2px solid var(--line);padding:26px 0 44px}
   .back{display:inline-block;border:2px solid var(--line);border-radius:99px;padding:7px 15px;font-size:14px;font-weight:700;text-decoration:none;background:#fff;box-shadow:3px 3px 0 var(--line)}
   .hgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:center;margin-top:28px}
-  .pill{display:inline-block;background:var(--ink);color:var(--yel);border-radius:99px;padding:5px 16px;font-size:14px;font-family:var(--font-display)}
+  .pill{display:inline-block;background:var(--ink);color:var(--yel);border-radius:99px;padding:5px 16px;font-size:14px;font-weight:600}
   .hero h1{font-size:clamp(32px,4.6vw,50px);margin:16px 0}
-  .hero h1 b{font-weight:400;color:var(--point-dk)}
+  .hero h1 b{font-weight:700;color:var(--point-dk)}
   .hero p{color:var(--sub);max-width:34em;margin-bottom:20px}
   .hstats{display:flex;flex-wrap:wrap;gap:8px}
   .hstats a{border:2px solid var(--line);border-radius:12px;padding:7px 12px;background:#fff;font-size:14px;font-weight:700;text-decoration:none}
@@ -109,7 +108,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* cases */
   .hl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:24px}
   .hl div{background:var(--navy);color:#fff;border:2px solid var(--line);border-radius:16px;padding:16px 18px}
-  .hl b{display:block;font-family:var(--font-display);font-weight:400;font-size:clamp(21px,2.4vw,26px);color:var(--accent);line-height:1.25;margin-bottom:4px}
+  .hl b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(21px,2.4vw,26px);color:var(--accent);line-height:1.25;margin-bottom:4px}
   .hl span{font-size:14px;opacity:.92}
   .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
   .cs{display:flex;flex-direction:column;padding:18px 18px 16px}
@@ -146,7 +145,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .rv .ph .cap{position:absolute;left:10px;bottom:8px;font-size:12px;font-weight:700;background:rgba(255,255,255,.92);border-radius:6px;padding:2px 8px}
   .rv .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block}
   .mimg{width:100%;height:360px;object-fit:cover;object-position:center 12%;display:block;border-bottom:2px solid var(--line)}
-  .rv .co{width:100%;height:100%;display:grid;place-items:center;font-family:var(--font-display);font-size:26px;position:relative}
+  .rv .co{width:100%;height:100%;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:26px;position:relative}
   .rv .co small{position:absolute;left:10px;bottom:8px;font-family:var(--font-base);font-size:12px;font-weight:700;background:rgba(255,255,255,.9);border-radius:6px;padding:2px 8px}
   .rv .cb{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
   .rv h3{font-size:19px;margin:10px 0 6px}
@@ -290,12 +289,12 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 
 /* ===== 1) 영상 — yt에 유튜브 영상 ID(일부공개)만 넣으면 썸네일·재생이 자동으로 붙음 ===== */
 const IV=[
-{id:'iv-kdg',yt:'wVVA_ld1HFQ',cat:'마케팅·홍보',who:'삼육대 경영학과 · 서울창조경제혁신센터',term:'2026 봄·여름학기 (6개월)',h:'이론을 넘어, 현장에서 마케팅을 해봤어요',s:'마케팅·홍보 인턴으로 일하며 실무 툴을 익히고, 공공기관과 창업 생태계의 일하는 방식을 경험했어요.',qa:[
+{id:'iv-kdg',yt:'wVVA_ld1HFQ',poster:'cs-ccei-pr',ppos:'center 30%',cat:'마케팅·홍보',who:'삼육대 경영학과 · 서울창조경제혁신센터',term:'2026 봄·여름학기 (6개월)',h:'이론을 넘어, 현장에서 마케팅을 해봤어요',s:'마케팅·홍보 인턴으로 일하며 실무 툴을 익히고, 공공기관과 창업 생태계의 일하는 방식을 경험했어요.',qa:[
 ['지원하게 된 계기는요?','경영학을 전공하면서 마케팅 직무에 꾸준히 관심이 있었어요. 이론에서 그치지 않고 실제 현장에서 적용해 보고 싶어 지원했습니다.'],
 ['어떤 점이 도움이 될 것 같나요?','실무 환경에서 마케팅 툴을 능숙하게 다루게 된 경험, 그리고 공공기관과 창업 생태계의 업무 과정을 직접 겪어 본 경험이 앞으로 큰 도움이 될 것 같아요.'],
 ['면접에서는 어떤 질문을 받았나요?','주로 마케팅 직무와 관련된 질문을 받았어요. 갈등을 해결한 경험을 바탕으로 협업을 얼마나 중요하게 생각하는지 묻는 질문도 기억에 남습니다.'],
 ['직접 참여해 보니 어땠나요?','청년이 실무에 체계적으로 적응하도록 돕는 지원 체계가 든든했어요. 실무진과 직접 소통하며 배울 수 있어 정말 유익했습니다.']],pull:'실무진과 직접 소통하며 배운 시간이 가장 유익했어요.'},
-{id:'iv-pso',yt:'Zg4F6Ejhakc',cat:'경영·총무',who:'덕성여대 국제통상학 · 관악중소벤처진흥원',term:'2026 가을학기',h:'낯선 일도 점점 스스로 해내게 됐어요',s:'홍보 콘텐츠 제작과 프로그램 운영을 지원하며, 실제 업무의 결과를 확인하는 경험을 했어요.',qa:[
+{id:'iv-pso',yt:'Zg4F6Ejhakc',poster:'cs-gwanak',ppos:'center 20%',cat:'경영·총무',who:'덕성여대 국제통상학 · 관악중소벤처진흥원',term:'2026 가을학기',h:'낯선 일도 점점 스스로 해내게 됐어요',s:'홍보 콘텐츠 제작과 프로그램 운영을 지원하며, 실제 업무의 결과를 확인하는 경험을 했어요.',qa:[
 ['어떤 일을 맡고 있나요?','다양한 홍보 콘텐츠를 만들고, 기관 프로그램 운영을 지원하고 있어요.'],
 ['인턴십의 좋은 점은요?','학교에서는 주로 이론을 배우고 과제를 했다면, 인턴십에서는 실제 업무를 하고 그 결과를 직접 확인할 수 있다는 점이 좋았어요.'],
 ['스스로 달라진 점은요?','처음엔 익숙하지 않던 일도 꾸준히 참여하면서 점점 스스로 해낼 수 있게 됐어요. 그 과정에서 성장하고 있다는 걸 느꼈습니다.'],
@@ -404,7 +403,7 @@ CS.forEach(c=>{ if(c.r) RV.push({id:'ra-'+c.id.slice(3),k:c.id,cat:c.cat,who:c.w
 
 /* ===== render ===== */
 const ytThumb=id=>id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:'';
-const thumb=(v,i,label,sm)=>`<div class="th${sm?' sm':''}" style="background:${HUES[i%8]}">${v.yt?`<img src="${ytThumb(v.yt)}" alt="" loading="lazy">`:''}<span class="play" aria-hidden="true"></span>${v.yt?'':`<small>${label}</small>`}</div>`;
+const thumb=(v,i,label,sm)=>`<div class="th${sm?' sm':''}" style="background:${HUES[i%8]}">${v.poster&&CPH[v.poster]?`<img src="${CPH[v.poster]}" alt="" loading="lazy" style="object-position:${v.ppos||'center'}">`:v.yt?`<img src="${ytThumb(v.yt)}" alt="" loading="lazy">`:''}<span class="play" aria-hidden="true"></span>${v.yt?'':`<small>${label}</small>`}</div>`;
 
 const all=[...CS,...IV,...SH.filter(v=>v.yt),...RV];
 document.getElementById('hstats').innerHTML=[['cases','참여기업 보도 사례',CS.length],['interview','인턴 인터뷰',IV.length],['shorts','현장 숏폼',SH.filter(v=>v.yt).length],['reviews','참여자 후기',RV.length]].map(([h,l,n])=>`<a href="#${h}">${l} ${n}</a>`).join('');
