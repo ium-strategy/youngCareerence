@@ -220,14 +220,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <section class="sec" id="interview">
-    <div class="wrap">
-      <div class="sh"><div><h2>인턴 인터뷰</h2><p>현장에서 맡은 업무와 배운 점을 인턴이 직접 이야기합니다.</p></div></div>
-      <div class="ivg" id="ivg"></div>
-      <div class="empty" id="ive">이 직무의 인터뷰 영상은 준비 중입니다.</div>
-    </div>
-  </section>
-
   <section class="sec" id="shorts">
     <div class="wrap">
       <div class="sh"><div><h2>인턴이 기록한 현장</h2><p>인턴이 근무지에서 직접 촬영하고 편집한 숏폼입니다. 2026 봄학기 숏폼 공모전 출품작입니다.</p></div>
@@ -402,7 +394,11 @@ CS.forEach(c=>{ if(c.r&&!OUTCOME.includes(c.id)) RV.push({id:'ra-'+c.id.slice(3)
 const ytThumb=id=>id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:'';
 const thumb=(v,i,label,sm)=>`<div class="th${sm?' sm':''}" style="background:${HUES[i%8]}">${v.poster&&CPH[v.poster]?`<img src="${CPH[v.poster]}" alt="" loading="lazy" style="object-position:${v.ppos||'center'}">`:v.yt?`<img src="${ytThumb(v.yt)}" alt="" loading="lazy">`:''}<span class="play" aria-hidden="true"></span>${v.yt?'':`<small>${label}</small>`}</div>`;
 
-const all=[...CS.filter(c=>OUTCOME.includes(c.id)),...IV,...SH.filter(v=>v.yt),...RV];
+const all=[...CS.filter(c=>OUTCOME.includes(c.id)),...SH.filter(v=>v.yt),...RV];
+/* 인터뷰 영상은 별도 섹션 없이 해당 학생의 사례·후기 안에서 재생(중복 노출 방지) */
+const IVMAP={'cs-ccei-pr':'iv-kdg','cs-gwanak':'iv-pso'};
+const ivOf=k=>IV.find(x=>x.id===IVMAP[k]);
+const ivBlock=iv=>`<h4>인턴 인터뷰</h4>${qaList(iv.qa)}<div class="pull">${iv.pull}</div>`;
 document.getElementById('ctaImg').src=CTAIMG;
 document.getElementById('hpic').innerHTML=`<img src="${HERO}" alt="기업 현장에서 직장인 선배와 대학생 인턴이 함께 일하는 모습을 표현한 3D 일러스트">`;
 
@@ -410,12 +406,9 @@ document.getElementById('csg').innerHTML=CS.filter(c=>OUTCOME.includes(c.id)).so
 <div class="top"><span class="tag">${c.cat}</span></div>
 <div class="nm">${c.nm}</div><div class="ind">${c.ind}</div>
 <h3>${c.t}</h3><div class="who">${c.who}</div>
-<div class="more"><button class="btn" type="button" data-open="${c.id}">사례 자세히 보기</button></div></article>`).join('');
+<div class="more"><button class="btn" type="button" data-open="${c.id}">${IVMAP[c.id]?'▶ 사례·인터뷰 영상 보기':'사례 자세히 보기'}</button></div></article>`).join('');
 
-document.getElementById('ivg').innerHTML=IV.map((v,i)=>`<article class="card iv" data-cat="${v.cat}">
-<button class="thb" type="button" data-open="${v.id}" aria-label="${esc(v.h)} 인터뷰 영상 보기">${thumb(v,i,'인터뷰 영상')}</button>
-<div class="ivb"><span class="tag">${v.cat}</span><h3>“${v.h}”</h3><p class="sum">${v.s}</p><div class="meta">${v.who}</div>
-<div class="more"><button class="btn" type="button" data-open="${v.id}">영상·인터뷰 전문 보기</button></div></div></article>`).join('');
+
 
 document.getElementById('rail').innerHTML=SH.filter(v=>v.yt).map((v,i)=>`<article class="card" data-cat="${v.cat}">
 <button class="thb" type="button" data-open="${v.id}" aria-label="${esc(v.t)} 숏폼 보기">${thumb(v,i+2,'숏폼',true)}</button>
@@ -424,7 +417,7 @@ document.getElementById('rail').innerHTML=SH.filter(v=>v.yt).map((v,i)=>`<articl
 document.getElementById('rvg').innerHTML=RV.map((r,i)=>`<article class="card rv" data-cat="${r.cat}">
 <div class="ph">${rph(r)?`<img src="${rph(r)}" alt="${esc(r.who)} 현장 사진" loading="lazy"${opos(r.k)}>${EXEC[r.k]?`<small class="cap">${EXEC[r.k]}</small>`:''}`:`<div class="co" style="background:${HUES[(i+4)%8]}">${r.co}</div>`}</div>
 <div class="cb"><span class="tag">${r.cat}</span><h3>“${r.h}”</h3><p>${r.s}</p><div class="meta">${r.who}</div>
-<div class="more"><button class="btn" type="button" data-open="${r.id}">${r.u?'소감 전체 보기':'후기 전체 보기'}</button></div></div></article>`).join('');
+<div class="more"><button class="btn" type="button" data-open="${r.id}">${IVMAP[r.k]?'▶ 소감·인터뷰 영상 보기':r.u?'소감 전체 보기':'후기 전체 보기'}</button></div></div></article>`).join('');
 
 /* ===== filter + fold ===== */
 const FOLD={csg:{rows:2,btn:'csm',open:false,unit:'사례'},rvg:{rows:1,btn:'rvm',open:false,unit:'후기'}};
@@ -436,7 +429,7 @@ let cur='전체';
 const apply=c=>{
   cur=c;
   chips.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===c));
-  [['csg','cse'],['ivg','ive'],['rail','she'],['rvg','rve']].forEach(([g,e])=>{
+  [['csg','cse'],['rail','she'],['rvg','rve']].forEach(([g,e])=>{
     const G=document.getElementById(g),f=FOLD[g],lim=f?colsOf(G)*f.rows:Infinity;
     let n=0;G.querySelectorAll(':scope > [data-cat]').forEach(el=>{const on=c==='전체'||el.dataset.cat===c;if(on)n++;el.style.display=on&&(!f||f.open||n<=lim)?'':'none'});
     document.getElementById(e).style.display=n?'none':'block';
@@ -457,15 +450,16 @@ const mod=document.getElementById('mod'),box=document.getElementById('box'),mc=d
 let last=null;
 const player=v=>`<div class="player">${v.yt?`<iframe src="https://www.youtube-nocookie.com/embed/${v.yt}?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${esc(v.h||v.t)}"></iframe>`:'영상을 준비하고 있습니다.'}</div>`;
 const qaList=qa=>`<dl>${qa.map(([q,a])=>`<dt>Q. ${q}</dt><dd>${a}</dd>`).join('')}</dl>`;
-const extLink=v=>`<div><a class="ext" href="${A+v.u}" target="_blank" rel="noopener" data-art="${v.u}">기사 원문 보기 ↗</a></div>`;
 const open=id=>{
   const v=all.find(x=>x.id===id);if(!v)return;
   last=document.activeElement;
   const k=id.slice(0,3);
   if(k==='iv-'){box.className='box v';mc.innerHTML=player(v)+`<div class="mb"><span class="tag">${v.cat}</span><h3>“${v.h}”</h3><div class="meta">${v.who} · ${v.term}</div>${qaList(v.qa)}<div class="pull">${v.pull}</div></div>`;}
   else if(k==='sh-'){box.className='box v solo';mc.innerHTML=player(v)+`<div class="mb">${v.cat?`<span class="tag">${v.cat}</span>`:''}<h3>${v.t}</h3><div class="meta">${v.who} · ${v.co}</div></div>`;}
-  else if(k==='cs-'){box.className='box';mc.innerHTML=`${CPH[v.id]?`<img class="mimg" src="${CPH[v.id]}" alt="${esc(v.nm)} 보도 사진">`:''}<div class="mb">${EXEC[v.id]?`<div class="src" style="margin-bottom:8px">사진: ${EXEC[v.id]}</div>`:''}<span class="tag">${v.cat}</span><h3>${v.nm}</h3><div class="meta">${v.ind} · ${v.who}</div><h4>인턴이 맡은 일</h4><ul>${v.w.map(x=>`<li>${x}</li>`).join('')}</ul><h4>기업의 평가</h4><p style="color:var(--sub)">${v.v}</p>${v.r?`<h4>인턴의 소감</h4><p style="color:var(--sub)">${v.r[1]}</p>`:''}${extLink(v)}</div>`;}
-  else if(v.u){box.className='box';mc.innerHTML=`${rph(v)?`<img class="mimg" src="${rph(v)}" alt="">`:''}<div class="mb">${EXEC[v.k]?`<div class="src" style="margin-bottom:8px">사진: ${EXEC[v.k]}</div>`:''}<span class="tag">${v.cat}</span><h3>“${v.h}”</h3><div class="meta">${v.who}</div><p style="color:var(--sub);margin-top:12px">${v.s}</p>${extLink(v)}</div>`;}
+  else if(k==='cs-'&&ivOf(v.id)){const iv=ivOf(v.id);box.className='box v';mc.innerHTML=player(iv)+`<div class="mb"><span class="tag">${v.cat}</span><h3>${v.nm}</h3><div class="meta">${v.ind} · ${v.who}</div><h4>인턴이 맡은 일</h4><ul>${v.w.map(x=>`<li>${x}</li>`).join('')}</ul><h4>기업의 평가</h4><p style="color:var(--sub)">${v.v}</p>${ivBlock(iv)}</div>`;}
+  else if(k==='cs-'){box.className='box';mc.innerHTML=`${CPH[v.id]?`<img class="mimg" src="${CPH[v.id]}" alt="${esc(v.nm)} 보도 사진">`:''}<div class="mb">${EXEC[v.id]?`<div class="src" style="margin-bottom:8px">사진: ${EXEC[v.id]}</div>`:''}<span class="tag">${v.cat}</span><h3>${v.nm}</h3><div class="meta">${v.ind} · ${v.who}</div><h4>인턴이 맡은 일</h4><ul>${v.w.map(x=>`<li>${x}</li>`).join('')}</ul><h4>기업의 평가</h4><p style="color:var(--sub)">${v.v}</p>${v.r?`<h4>인턴의 소감</h4><p style="color:var(--sub)">${v.r[1]}</p>`:''}</div>`;}
+  else if(v.u&&ivOf(v.k)){const iv=ivOf(v.k);box.className='box v';mc.innerHTML=player(iv)+`<div class="mb"><span class="tag">${v.cat}</span><h3>“${v.h}”</h3><div class="meta">${v.who}</div><p style="color:var(--sub);margin-top:12px">${v.s}</p>${ivBlock(iv)}</div>`;}
+  else if(v.u){box.className='box';mc.innerHTML=`${rph(v)?`<img class="mimg" src="${rph(v)}" alt="">`:''}<div class="mb">${EXEC[v.k]?`<div class="src" style="margin-bottom:8px">사진: ${EXEC[v.k]}</div>`:''}<span class="tag">${v.cat}</span><h3>“${v.h}”</h3><div class="meta">${v.who}</div><p style="color:var(--sub);margin-top:12px">${v.s}</p></div>`;}
   else{box.className='box';mc.innerHTML=`${PHOTOS[v.id]?`<img src="${PHOTOS[v.id]}" alt="" style="width:100%;max-height:300px;object-fit:cover;display:block;border-bottom:2px solid var(--line)">`:''}<div class="mb"><span class="tag">${v.cat}</span><h3>“${v.h}”</h3><div class="meta">${v.who}</div>${qaList(v.qa)}<div class="pull">${v.pull}</div></div>`;}
   mod.classList.add('on');document.body.style.overflow='hidden';document.getElementById('mx').focus();
   if(window.gaEvent)gaEvent(k==='iv-'||k==='sh-'?'video_open':k==='cs-'?'case_open':'review_open',{id:id,cat:v.cat||'none'});
