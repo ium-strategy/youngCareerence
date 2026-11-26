@@ -220,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="sec" id="shorts">
     <div class="wrap">
-      <div class="sh"><div><h2>인턴의 카메라로 본 현장</h2><p>인턴이 근무지에서 직접 촬영하고 편집한 숏폼입니다. 2026 봄학기 숏폼 공모전 출품작입니다.</p></div>
+      <div class="sh"><div><h2>인턴의 카메라로 본 현장</h2><p>인턴 인터뷰와, 인턴이 근무지에서 직접 촬영하고 편집한 숏폼 영상입니다.</p></div>
         <div class="arw"><button type="button" id="pv" aria-label="이전 영상">←</button><button type="button" id="nx" aria-label="다음 영상">→</button></div></div>
       <div class="rail" id="rail"></div>
     </div>
@@ -382,7 +382,7 @@ const RV=[
 ["어떤 분들에게 추천하나요?","전공과 다른 분야라도 괜찮아요. 다양한 업무와 사람을 통해 많이 배우고 성장할 수 있는 기회예요."]],pull:"낯선 분야에 부딪히며, 스스로 성장하는 경험을 했어요."}
 ];
 /* 성과 섹션: 실제 결과(채용 전환·수치 성과)가 있는 사례만. 나머지 기사는 '참여자 후기'로만 노출(중복 방지) */
-const OUTCOME=['cs-moti','cs-kingospring','cs-teameverywhere','cs-cityeyelab','cs-ccei-pr','cs-narrative'];
+const OUTCOME=['cs-moti','cs-kingospring','cs-teameverywhere','cs-cityeyelab','cs-ccei-pr','cs-narrative','cs-whatssub','cs-ccei-plan','cs-younpartners'];
 CS.forEach(c=>{ if(c.r&&!OUTCOME.includes(c.id)) RV.push({id:'ra-'+c.id.slice(3),k:c.id,cat:c.cat,who:c.who.split(' · ').filter(x=>!/[0-9]명/.test(x)).join(' · ')+' · '+c.nm,h:c.r[0],s:c.r[1],co:c.nm,u:c.u,d:c.d}); });
 
 /* ===== render ===== */
@@ -392,9 +392,9 @@ const thumb=(v,i,label,sm)=>`<div class="th${sm?' sm':''}" style="background:${H
 /* 숏폼·후기는 따로 노출(같은 학생이어도 합치지 않음) */
 const SHMAP={};
 const SHIN=Object.values(SHMAP);
-const all=[...CS.filter(c=>OUTCOME.includes(c.id)),...SH.filter(v=>v.yt&&!SHIN.includes(v.id)),...RV];
+const all=[...CS.filter(c=>OUTCOME.includes(c.id)),...IV.filter(v=>v.yt),...SH.filter(v=>v.yt&&!SHIN.includes(v.id)),...RV];
 /* 인터뷰 영상은 별도 섹션 없이 해당 학생의 사례·후기 안에서 재생(중복 노출 방지) */
-const IVMAP={'cs-ccei-pr':'iv-kdg','cs-gwanak':'iv-pso'};
+const IVMAP={};
 const ivOf=k=>IV.find(x=>x.id===IVMAP[k]);
 const ivBlock=iv=>`<h4>인턴 인터뷰</h4>${qaList(iv.qa)}<div class="pull">${iv.pull}</div>`;
 document.getElementById('ctaImg').src=CTAIMG;
@@ -404,21 +404,22 @@ document.getElementById('csg').innerHTML=CS.filter(c=>OUTCOME.includes(c.id)).so
 <div class="top"><span class="tag">${c.cat}</span></div>
 <div class="nm">${c.nm}</div><div class="ind">${c.ind}</div>
 <h3>${c.t}</h3><div class="who">${c.who}</div>
-<div class="more"><button class="btn" type="button" data-open="${c.id}">${IVMAP[c.id]?'▶ 사례·인터뷰 영상 보기':'사례 자세히 보기'}</button></div></article>`).join('');
+<div class="more"><button class="btn" type="button" data-open="${c.id}">사례 자세히 보기</button></div></article>`).join('');
 
 
 
-document.getElementById('rail').innerHTML=SH.filter(v=>v.yt&&!SHIN.includes(v.id)).map((v,i)=>`<article class="card" data-cat="${v.cat}">
+const RAIL=[...IV.filter(v=>v.yt).map(v=>({...v,t:'인터뷰 · '+v.h,who:v.who.split(' · ')[0].replace(/ .*/,''),co:v.who.split(' · ')[1]})),...SH.filter(v=>v.yt&&!SHIN.includes(v.id))];
+document.getElementById('rail').innerHTML=RAIL.map((v,i)=>`<article class="card" data-cat="${v.cat}">
 <button class="thb" type="button" data-open="${v.id}" aria-label="${esc(v.t)} 숏폼 보기">${thumb(v,i+2,'숏폼',true)}</button>
 <div class="cb">${v.cat?`<span class="tag">${v.cat}</span>`:''}<b>${v.t}</b>${v.who} · ${v.co}</div></article>`).join('');
 
 document.getElementById('rvg').innerHTML=RV.map((r,i)=>`<article class="card rv" data-cat="${r.cat}">
 <div class="ph">${rph(r)?`<img src="${rph(r)}" alt="${esc(r.who)} 현장 사진" loading="lazy"${opos(r.k)}>${EXEC[r.k]?`<small class="cap">${EXEC[r.k]}</small>`:''}`:`<div class="co" style="background:${HUES[(i+4)%8]}">${r.co}</div>`}</div>
 <div class="cb"><span class="tag">${r.cat}</span><h3>“${r.h}”</h3><p>${r.s}</p><div class="meta">${r.who}</div>
-<div class="more"><button class="btn" type="button" data-open="${r.id}">${IVMAP[r.k]?'▶ 소감·인터뷰 영상 보기':SHMAP[r.id]?'▶ 후기·숏폼 영상 보기':r.u?'소감 전체 보기':'후기 전체 보기'}</button></div></div></article>`).join('');
+<div class="more"><button class="btn" type="button" data-open="${r.id}">후기 전체 보기</button></div></div></article>`).join('');
 
 /* ===== filter + fold ===== */
-const FOLD={csg:{rows:2,btn:'csm',open:false,unit:'사례'},rvg:{rows:1,btn:'rvm',open:false,unit:'후기'}};
+const FOLD={csg:{rows:3,btn:'csm',open:false,unit:'사례'},rvg:{rows:1,btn:'rvm',open:false,unit:'후기'}};
 const colsOf=g=>getComputedStyle(g).gridTemplateColumns.split(' ').filter(Boolean).length||1;
 const chips=document.getElementById('chips');
 const cnt=c=>c==='전체'?all.length:all.filter(x=>x.cat===c).length;
