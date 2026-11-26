@@ -200,7 +200,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <span class="pill">YOUNG STORY</span>
         <h1>한 학기 동안,<br>인턴은 <b>현장의 동료</b>가 되었습니다</h1>
-        <p>기업은 사람을 얻고, 청년은 경력을 얻었습니다.</p>
+        <p>기업은 함께 일할 사람을 만나고, 청년은 첫 경력을 시작했습니다.<br>한 학기 동안 현장에서 쌓은 성과와 이야기를 소개합니다.</p>
       </div>
       <div class="hpic" id="hpic"></div>
     </div>
@@ -214,7 +214,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap">
       <div class="sh"><div><h2>인턴십으로 남긴 성과</h2><p>채용 전환, 성과 지표처럼 인턴십이 실제 결과로 이어진 사례만 모았습니다.</p></div></div>
       <div class="grid3" id="csg"></div>
-      <div class="empty" id="cse">이 직무의 보도 사례는 준비 중입니다.</div>
       <button class="lnk" type="button" id="csm" aria-controls="csg"></button>
     </div>
   </section>
@@ -224,7 +223,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sh"><div><h2>인턴의 카메라로 본 현장</h2><p>인턴이 근무지에서 직접 촬영하고 편집한 숏폼입니다. 2026 봄학기 숏폼 공모전 출품작입니다.</p></div>
         <div class="arw"><button type="button" id="pv" aria-label="이전 영상">←</button><button type="button" id="nx" aria-label="다음 영상">→</button></div></div>
       <div class="rail" id="rail"></div>
-      <div class="empty" id="she">이 직무의 숏폼은 준비 중입니다.</div>
     </div>
   </section>
 
@@ -232,7 +230,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap">
       <div class="sh"><div><h2>인턴들의 한 학기</h2><p>현장에서 일한 인턴들이 직접 전하는 이야기입니다.</p></div></div>
       <div class="grid3" id="rvg"></div>
-      <div class="empty" id="rve">이 직무의 후기는 준비 중입니다.</div>
       <button class="lnk" type="button" id="rvm" aria-controls="rvg"></button>
     </div>
   </section>
@@ -240,7 +237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="cta">
     <div class="wrap ctag">
       <div class="cimg"><img id="ctaImg" alt="직장인 선배와 대학생 인턴이 하이파이브하는 3D 일러스트"></div>
-      <div><h2>2027 서울영커리언스 인턴십<br>함께할 참여기업을 찾습니다</h2>
+      <div><h2>2027 서울영커리언스,<br>다음 이야기를 함께 쓸 기업을 기다립니다</h2>
         <p>참여기업 모집 일정과 신청 방법은 모집 안내 페이지에서 확인하실 수 있습니다.</p>
       <a class="cbtn" id="corpCta" href="https://참여기업.서울영커리언스.kr/" target="_blank" rel="noopener">참여기업 모집 안내 →</a></div>
     </div>
@@ -433,7 +430,7 @@ const apply=c=>{
   [['csg','cse'],['rail','she'],['rvg','rve']].forEach(([g,e])=>{
     const G=document.getElementById(g),f=FOLD[g],lim=f?colsOf(G)*f.rows:Infinity;
     let n=0;G.querySelectorAll(':scope > [data-cat]').forEach(el=>{const on=c==='전체'||el.dataset.cat===c;if(on)n++;el.style.display=on&&(!f||f.open||n<=lim)?'':'none'});
-    document.getElementById(e).style.display=n?'none':'block';
+    G.closest('section').style.display=n?'':'none';
     if(f){const b=document.getElementById(f.btn);b.style.display=n>lim?'flex':'none';b.innerHTML=f.open?'접기 ↑':`${f.unit} ${n-lim}건 더 보기 ↓`;b.setAttribute('aria-expanded',f.open)}
   });
 };
